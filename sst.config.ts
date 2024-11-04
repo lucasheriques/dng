@@ -19,6 +19,7 @@ export default $config({
   async run() {
     await import("./infra/storage");
     const api = await import("./infra/api");
+    await import("./infra/www");
 
     return {
       api: api.myApi.url,

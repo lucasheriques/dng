@@ -15,5 +15,9 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Bucket"
     }
+    "dng-www": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
   }
 }
