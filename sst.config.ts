@@ -3,9 +3,17 @@
 export default $config({
   app(input) {
     return {
-      name: "monorepo-template",
+      name: "dng",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
+      providers: {
+        aws: {
+          profile:
+            input?.stage === "production"
+              ? "lucasfaria-prod"
+              : "lucasfaria-dev",
+        },
+      },
     };
   },
   async run() {
