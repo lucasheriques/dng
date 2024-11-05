@@ -361,7 +361,7 @@ export function LandingPage() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl w-full">
               <AnimatedStat
-                value={800}
+                value={850}
                 label="inscritos na newsletter"
                 color="text-primary"
               />

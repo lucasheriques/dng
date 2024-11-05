@@ -14,20 +14,22 @@ export function AnimatedStat({
   value,
   label,
   color,
-  duration = 2,
+  duration = 1.5,
 }: AnimatedStatProps) {
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref);
 
   useEffect(() => {
-    if (isInView) {
+    if (isInView && !hasAnimated) {
       let start = 0;
       const increment = value / (duration * 60); // 60fps
       const timer = setInterval(() => {
         start += increment;
         if (start >= value) {
           setCount(value);
+          setHasAnimated(true);
           clearInterval(timer);
         } else {
           setCount(Math.floor(start));
@@ -36,7 +38,7 @@ export function AnimatedStat({
 
       return () => clearInterval(timer);
     }
-  }, [value, duration, isInView]);
+  }, [value, duration, isInView, hasAnimated]);
 
   return (
     <motion.div

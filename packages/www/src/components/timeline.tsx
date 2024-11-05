@@ -33,7 +33,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
           Um pouco da minha história
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base md:text-lg max-w-sm"></p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-base md:text-lg max-w-sm">
+          hello
+        </p>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
