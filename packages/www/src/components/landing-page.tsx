@@ -16,11 +16,24 @@ import Link from "next/link";
 const data = [
   {
     title: "Newsletter",
+    date: "Maio 2024",
     content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Conteúdo selecionado que já impactou +800 devs brasileiros
-        </p>
+      <div className="space-y-8">
+        <div className="prose dark:prose-invert">
+          <p>
+            Eu sempre quis produzir conteúdo para ajudar os outros, mas nunca
+            tinha a certeza de como começar.
+          </p>
+          <p>
+            O conselho que finalmente funcionou pra mim foi: escrever o que eu
+            gostaria de saber 2 anos atrás.
+          </p>
+          <p>
+            A maior parte desses artigos serão de graça, pra sempre. Pois o meu
+            objetivo é aprender cada vez mais para repassar todo meu
+            conhecimento.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-white/5 p-6 rounded-lg">
             <h3 className="text-lg font-semibold text-white mb-2">
@@ -52,7 +65,7 @@ const data = [
           className="block"
         >
           <Button className="w-full md:w-auto" variant="outline">
-            Receba conteúdo gratuito toda semana
+            Receba os artigos toda semana
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
@@ -61,6 +74,7 @@ const data = [
   },
   {
     title: "Mentoria",
+    date: "Junho 2024",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -104,77 +118,8 @@ const data = [
     ),
   },
   {
-    title: "Depoimentos",
-    content: (
-      <div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <ExpandableCard
-            title="Uma Jornada Transformadora"
-            summary="Essa mentoria com o Lucas foi um achado viu. O cara é uma
-                    referência técnica gigante e uma fonte de energia para quem
-                    deseja crescer na área."
-            fullContent={
-              <div className="prose prose-invert">
-                <p>O Lucas é um mentor muito prático e direto ao ponto.</p>
-                <p>
-                  Ele procura entender meus objetivos antes de me orientar, dá
-                  feedback personalizado e ajuda a organizar minhas metas.
-                </p>
-                <p>
-                  Tenho conseguido identificar melhor os meus GAP's técnicos(sem
-                  medo de julgamentos) e estou melhorando a gestão da minha
-                  agenda de estudos e desenvolvimento técnico, conciliando bem
-                  com a progressão profissional que eu almejo.
-                </p>
-                <p>
-                  Além do mais, o Lucas inspira a gente pela própria prática
-                  sabe: ele cria e compartilha novos projetos e ideias com a
-                  comunidade, o que acaba motivando a gente a buscar o mesmo
-                  nível de inovação e comprometimento.
-                </p>
-                <p>
-                  Essa mentoria com o Lucas foi um achado viu. O cara é uma
-                  referência técnica gigante e uma fonte de energia para quem
-                  deseja crescer na área.
-                </p>
-              </div>
-            }
-            footer={
-              <div className="flex items-center space-x-4">
-                <Avatar>
-                  <AvatarImage src="/daiane.jpeg" />
-                  <AvatarFallback>DG</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-semibold text-white">Daiane Galvão</p>
-                  <p className="text-sm text-white/60">
-                    Senior Software Engineer @ Hotmart
-                  </p>
-                </div>
-              </div>
-            }
-          />
-          <div className="bg-white/5 p-6 rounded-lg">
-            <p className="text-neutral-200 text-sm mb-4">
-              "Os templates e dicas de preparação para entrevistas fizeram toda
-              diferença. Em 2 meses consegui propostas de 3 empresas
-              diferentes!"
-            </p>
-            <div className="flex items-center">
-              <div className="mr-4">
-                <p className="text-white font-medium">Maria Santos</p>
-                <p className="text-neutral-400 text-sm">
-                  Frontend Developer @ TechStartup
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
     title: "Comunidade",
+    date: "Junho 2024",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -204,6 +149,132 @@ const data = [
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
+      </div>
+    ),
+  },
+  {
+    title: "Depoimentos",
+    date: "Novembro 2024",
+    content: (
+      <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ExpandableCard
+            title="Mentoria individual"
+            summary="Essa mentoria com o Lucas foi um achado viu. O cara é uma
+                    referência técnica gigante e uma fonte de energia para quem
+                    deseja crescer na área."
+            fullContent={
+              <div className="prose dark:prose-invert">
+                <p>O Lucas é um mentor muito prático e direto ao ponto.</p>
+                <p>
+                  Ele procura entender meus objetivos antes de me orientar, dá
+                  feedback personalizado e ajuda a organizar minhas metas.
+                </p>
+                <p>
+                  Tenho conseguido identificar melhor os meus GAP&apos;s
+                  técnicos(sem medo de julgamentos) e estou melhorando a gestão
+                  da minha agenda de estudos e desenvolvimento técnico,
+                  conciliando bem com a progressão profissional que eu almejo.
+                </p>
+                <p>
+                  Além do mais, o Lucas inspira a gente pela própria prática
+                  sabe: ele cria e compartilha novos projetos e ideias com a
+                  comunidade, o que acaba motivando a gente a buscar o mesmo
+                  nível de inovação e comprometimento.
+                </p>
+                <p>
+                  Essa mentoria com o Lucas foi um achado viu. O cara é uma
+                  referência técnica gigante e uma fonte de energia para quem
+                  deseja crescer na área.
+                </p>
+              </div>
+            }
+            footer={
+              <div className="flex items-center space-x-4">
+                <Avatar>
+                  <AvatarImage src="/reviews/daiane.jpeg" />
+                  <AvatarFallback>DG</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-white">
+                    <Link
+                      href="https://www.linkedin.com/in/daianegalvao/"
+                      target="_blank"
+                    >
+                      Daiane Galvão
+                    </Link>
+                  </p>
+                  <p className="text-sm text-white/60">
+                    Senior Software Engineer @ Hotmart
+                  </p>
+                </div>
+              </div>
+            }
+          />
+          <ExpandableCard
+            title="Mentoria em grupo"
+            summary="Meu campo de visão era bem restrito, mas os artigos e mentorias do Lucas me ajudaram a expandi-lo, tanto em aspectos técnicos quanto em questões sociais e de comunicação."
+            fullContent={
+              <div className="prose dark:prose-invert">
+                <p>
+                  Conheci o Lucas através de um dos primeiros artigos dele. Já
+                  estava trabalhando no exterior e me identifiquei muito com os
+                  temas que ele abordava, especificamente quando ele aborda
+                  sobre as algemas de ouro - aquilo mexeu muito comigo, pois na
+                  época já vinha me sentindo desconfortável com o rumo que minha
+                  carreira como dev estava tomando.
+                </p>
+                <p>
+                  Me sentia muito parado no tempo e acomodado. Depois disso,
+                  assinei e comecei a acompanhar a newsletter, e desde então
+                  tenho aprendido bastante. Consegui entender os pontos que eu
+                  precisava melhorar para sair da minha zona de conforto.
+                </p>
+                <p>
+                  Durante as mentorias e todo o material que o Lucas fornece,
+                  aprendi tudo que eu precisava melhorar: minha comunicação,
+                  minha postura em redes sociais como LinkedIn, leetcode, system
+                  designs, como me comportar em diferentes etapas de uma
+                  entrevista. Tudo isso naturalmente está fazendo eu melhorar a
+                  cada dia e agora estou de fato enxergando um novo sentido na
+                  minha carreira como dev.
+                </p>
+                <p>
+                  Não apenas os artigos e mentorias, mas sempre conversamos por
+                  mensagem todos os dias, onde recebo conselhos técnicos,
+                  discutimos sobre alguma empresa em específico, um problema
+                  técnico, qualquer coisa, inclusive às vezes assuntos da vida.
+                </p>
+                <p>
+                  Acredito que isso seja um grande diferencial em sua mentoria -
+                  é como criar uma relação de amizade onde vocês podem trocar
+                  experiências o tempo todo, com todos os membros da comunidade.
+                </p>
+              </div>
+            }
+            footer={
+              <div className="flex items-center space-x-4">
+                <Avatar>
+                  <AvatarImage src="/reviews/matheus.jpeg" />
+                  <AvatarFallback>MG</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-white">
+                    <Link
+                      href="https://www.linkedin.com/in/matusca96/"
+                      target="_blank"
+                    >
+                      Matheus Gomes
+                    </Link>
+                  </p>
+                  <p className="text-sm text-white/60">
+                    Technical Lead @ MoOngy
+                  </p>
+                </div>
+              </div>
+            }
+          />
+        </div>
       </div>
     ),
   },
@@ -323,7 +394,7 @@ export function LandingPage() {
                 opacity: { delay: 0.9, duration: 0.3 },
                 filter: { delay: 0.9, duration: 0.3 },
               }}
-              className="bg-gradient-to-r from-primary via-yellow-400 to-[#FF4B8C] text-transparent bg-clip-text inline-block"
+              className="bg-gradient-to-r from-primary via-yellow-400 to-accent-secondary text-transparent bg-clip-text inline-block"
             >
               mundo inteiro
             </motion.span>

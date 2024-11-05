@@ -1,11 +1,54 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   title: string;
+  date?: string;
   content: React.ReactNode;
 }
+
+const TimelineCircle = ({
+  scrollYProgress,
+  index,
+  total,
+}: {
+  scrollYProgress: MotionValue<number>;
+  index: number;
+  total: number;
+}) => {
+  const circleTransform = useTransform(
+    scrollYProgress,
+    [index / total, (index + 0.2) / total],
+    ["rgb(229 229 229)", "hsl(var(--accent-secondary))"]
+  );
+
+  const circleScale = useTransform(
+    scrollYProgress,
+    [index / total, (index + 0.1) / total],
+    [1, 1.2]
+  );
+
+  return (
+    <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gradient-to-br from-white/10 to-white/5 dark:from-white/5 dark:to-transparent backdrop-blur-sm flex items-center justify-center shadow-lg">
+      <motion.div
+        className="h-6 w-6 rounded-full border-2 border-neutral-200/40 dark:border-neutral-700/40 flex items-center justify-center"
+        style={{
+          scale: circleScale,
+          background: circleTransform,
+          boxShadow: "0 0 10px rgba(59, 130, 246, 0.3)",
+        }}
+      >
+        <motion.div
+          className="h-2 w-2 rounded-full bg-white dark:bg-white/90"
+          style={{
+            scale: circleScale,
+          }}
+        />
+      </motion.div>
+    </div>
+  );
+};
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,9 +76,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
           Um pouco da minha história
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base md:text-lg max-w-sm">
-          hello
-        </p>
+        <div className="prose dark:prose-invert">
+          <p>
+            Eu sempre quis produzir conteúdo para ajudar os outros, mas nunca
+            tinha a certeza de como começar.
+          </p>
+          <p>
+            O conselho que finalmente funcionou pra mim foi: escrever o que eu
+            gostaria de saber 2 anos atrás.
+          </p>
+        </div>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
@@ -45,19 +95,35 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
+              <TimelineCircle
+                scrollYProgress={scrollYProgress}
+                index={index}
+                total={data.length}
+              />
+              <div className="hidden md:block md:pl-20">
+                <h3 className="text-xl md:text-5xl font-bold text-neutral-500 dark:text-neutral-400">
+                  {item.title}
+                </h3>
+                {item.date && (
+                  <span className="text-sm text-neutral-400 dark:text-neutral-500">
+                    {item.date}
+                  </span>
+                )}
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 ">
-                {item.title}
-              </h3>
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
-                {item.title}
-              </h3>
-              {item.content}{" "}
+              <div className="md:hidden block mb-4 text-left">
+                <h3 className="text-2xl font-bold text-neutral-500 dark:text-neutral-400">
+                  {item.title}
+                </h3>
+                {item.date && (
+                  <span className="text-sm text-neutral-400 dark:text-neutral-500">
+                    {item.date}
+                  </span>
+                )}
+              </div>
+              {item.content}
             </div>
           </div>
         ))}
@@ -72,7 +138,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-accent-secondary via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
           />
         </div>
       </div>

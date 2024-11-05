@@ -32,7 +32,7 @@ export function ExpandableCard({
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
         <button type="button" className="rounded-xl text-left outline-primary">
-          <Card className="w-full max-w-md cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg hover:-translate-y-1">
+          <Card className="w-full max-w-md cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
             <CardHeader>
               {title && (
                 <CardTitle className="text-white group-hover:text-[#5CFFE1] transition-colors">

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { socials } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe2 } from "lucide-react";
 import Image from "next/image";
@@ -50,15 +51,16 @@ export function Footer() {
               </span>
             </div>
             <p className="text-white/80">
-              Construindo uma ponte entre desenvolvedores brasileiros e
-              oportunidades globais. Nossa comunidade ajuda devs a conquistarem
-              vagas internacionais e construírem carreiras sem fronteiras.
+              Uma comunidade para profissionais de TI brasileiros que querem
+              crescer na carreira e se destacar no mercado internacional.
             </p>
             <div className="pt-4">
-              <Button variant="outline" className="w-full sm:w-auto">
-                Junte-se à comunidade
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link href={socials.discord} target="_blank">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Junte-se à comunidade
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -125,9 +127,11 @@ export function Footer() {
             <h3 className="text-lg font-semibold text-white mb-6">Contato</h3>
             <div className="space-y-4">
               <p className="text-white/80">
-                Tem alguma dúvida? Entre em contato conosco:
+                Tem alguma dúvida? Entre em contato comigo:
               </p>
-              <p className="text-[#5CFFE1]">contato@devnagringa.com</p>
+              <a className="text-primary block" href="mailto:hi@lucasfaria.dev">
+                hi@lucasfaria.dev
+              </a>
               <div className="flex space-x-4 pt-2">
                 <Link
                   href="#"
