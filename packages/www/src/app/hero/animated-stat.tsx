@@ -7,15 +7,9 @@ interface AnimatedStatProps {
   value: number;
   label: string;
   color: string;
-  duration?: number;
 }
 
-export function AnimatedStat({
-  value,
-  label,
-  color,
-  duration = 1.5,
-}: AnimatedStatProps) {
+export function AnimatedStat({ value, label, color }: AnimatedStatProps) {
   const ref = useRef<HTMLDivElement>(null);
   const countRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
