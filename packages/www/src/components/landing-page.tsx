@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedStat } from "@/app/hero/animated-stat";
+import { ArticleCard } from "@/components/article-card";
 import { ExpandableCard } from "@/components/expandable-card";
 import Features from "@/components/features";
 import { Footer } from "@/components/footer";
@@ -13,6 +14,41 @@ import { motion } from "framer-motion";
 import { ArrowRight, Globe2, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+const POPULAR_ARTICLES = [
+  {
+    link: "https://newsletter.nagringa.dev/p/os-maiores-salarios-do-brasil-para",
+    title: "Os maiores salários do Brasil para engenheiros de software",
+    description:
+      "Entenda porque existem tanta diferença entre salários de empresas, e o modelo trimodal de salários para engenheiros de software.",
+    readingTime: "7min",
+    views: "4000",
+  },
+  {
+    link: "https://newsletter.nagringa.dev/p/dev-na-gringa-contratacao-impostos-hardware",
+    title: "Dev na Gringa: contratação, impostos, hardware e começando do zero",
+    description:
+      "Como foi a questão burocrática no meu trabalho pra fora desde 2020. E o que eu faria se estivesse começando do zero.",
+    readingTime: "9min",
+    views: "1000",
+  },
+  {
+    link: "https://newsletter.nagringa.dev/p/processo-seletivo-vagas-engenharia-de-software-na-brex",
+    title: "O processo seletivo para vagas de engenharia de software na Brex",
+    description:
+      "Todas as etapas do processo seletivo para vagas de engenharia de software na Brex, o que esperar em cada uma delas, e como se preparar.",
+    readingTime: "11min",
+    views: "1500",
+  },
+  {
+    link: "https://newsletter.nagringa.dev/p/como-eu-virei-um-dev-na-gringa",
+    title: "Dev na Gringa: Como Encontrar Vagas e Salários",
+    description:
+      "Como eu me tornei um dev na gringa. Onde encontrar vagas, salários, e conhecimentos necessários.",
+    readingTime: "6min",
+    views: "2000",
+  },
+];
 
 const data = [
   {
@@ -36,30 +72,16 @@ const data = [
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Como consegui meu primeiro trabalho remoto
-            </h3>
-            <p className="text-neutral-300 text-sm mb-4">
-              O passo a passo completo que usei para me destacar e ser
-              contratado por uma empresa americana...
-            </p>
-            <span className="text-primary text-xs">
-              +300 leitores • 12 min de leitura
-            </span>
-          </div>
-          <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Inglês técnico para entrevistas
-            </h3>
-            <p className="text-neutral-300 text-sm mb-4">
-              As principais expressões e termos que você precisa dominar para se
-              comunicar bem em processos seletivos...
-            </p>
-            <span className="text-primary text-xs">
-              +250 leitores • 8 min de leitura
-            </span>
-          </div>
+          {POPULAR_ARTICLES.map((article, index) => (
+            <ArticleCard
+              key={index}
+              title={article.title}
+              description={article.description}
+              link={article.link}
+              readingTime={article.readingTime}
+              views={article.views}
+            />
+          ))}
         </div>
         <Link
           href={`${socials.newsletter}/subscribe?ref=devnagringa`}
