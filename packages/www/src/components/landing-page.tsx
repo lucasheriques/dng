@@ -2,6 +2,7 @@
 
 import { AnimatedStat } from "@/app/hero/animated-stat";
 import { ExpandableCard } from "@/components/expandable-card";
+import Features from "@/components/features";
 import { Footer } from "@/components/footer";
 import { Timeline } from "@/components/timeline";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -354,7 +355,7 @@ export function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
-          <nav className="container mx-auto px-4 py-6 flex items-center justify-between">
+          <nav className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Globe2 className="h-6 w-6 text-[#5CFFE1]" />
               <span className="font-bold text-white text-xl">
@@ -362,16 +363,20 @@ export function LandingPage() {
               </span>
             </div>
             <div className="flex items-center gap-4">
-              <Button variant="ghost">Comunidade</Button>
-              <Button className="bg-[#5CFFE1] hover:bg-[#5CFFE1]/90 text-[#0A0118]">
-                Participar
-              </Button>
+              <Link href={`${socials.discord}`}>
+                <Button variant="ghost">Comunidade</Button>
+              </Link>
+              <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
+                <Button className="bg-[#5CFFE1] hover:bg-[#5CFFE1]/90 text-[#0A0118]">
+                  Participar
+                </Button>
+              </Link>
             </div>
           </nav>
         </motion.header>
 
         {/* Hero Content */}
-        <div className="container mx-auto px-4 pt-24 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 pt-24 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -399,12 +404,12 @@ export function LandingPage() {
               mundo inteiro
             </motion.span>
           </h1>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl">
+          <h2 className="text-xl text-white/80 mb-8 max-w-2xl">
             <AnimatedText
               text="Sua jornada como dev não precisa ter fronteiras. Junte-se a uma comunidade de desenvolvedores brasileiros que estão conquistando oportunidades globais e crescendo na carreira."
               delay={0.9}
             />
-          </p>
+          </h2>
           <motion.div
             className="flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 20 }}
@@ -417,10 +422,12 @@ export function LandingPage() {
                 <Rocket className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="h-12 px-6 text-lg">
-              Veja o conteúdo gratuito
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
+              <Button variant="outline" className="h-12 px-6 text-lg">
+                Veja o conteúdo gratuito
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Stats */}
@@ -451,6 +458,7 @@ export function LandingPage() {
         </div>
       </div>
 
+      <Features />
       <Timeline data={data} />
       <Footer />
     </div>

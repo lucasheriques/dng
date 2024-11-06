@@ -1,5 +1,5 @@
 "use client";
-import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
@@ -20,7 +20,7 @@ const TimelineCircle = ({
   const circleTransform = useTransform(
     scrollYProgress,
     [index / total, (index + 0.2) / total],
-    ["rgb(229 229 229)", "hsl(var(--accent-secondary))"]
+    ["rgb(229 229 229)", "#ff4d8e"]
   );
 
   const circleScale = useTransform(
@@ -72,22 +72,6 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div className="w-full bg-slate-950 md:px-10" ref={containerRef}>
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
-          Um pouco da minha história
-        </h2>
-        <div className="prose dark:prose-invert">
-          <p>
-            Eu sempre quis produzir conteúdo para ajudar os outros, mas nunca
-            tinha a certeza de como começar.
-          </p>
-          <p>
-            O conselho que finalmente funcionou pra mim foi: escrever o que eu
-            gostaria de saber 2 anos atrás.
-          </p>
-        </div>
-      </div>
-
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div
