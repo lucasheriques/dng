@@ -5,6 +5,7 @@ import { ArticleCard } from "@/components/article-card";
 import { ExpandableCard } from "@/components/expandable-card";
 import Features from "@/components/features";
 import { Footer } from "@/components/footer";
+import { MentorshipSection } from "@/components/mentorship-section";
 import { Timeline } from "@/components/timeline";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -61,82 +62,7 @@ const data = [
   {
     title: "Mentoria",
     date: "Junho 2024",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Acelere sua carreira com mentoria personalizada e recursos exclusivos
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white/5 p-6 rounded-lg">
-            <Globe2 className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-white font-medium mb-2">Conteúdo Exclusivo</h3>
-            <p className="text-neutral-300 text-sm">
-              Guias práticos e vídeos detalhados sobre processos seletivos
-              internacionais
-            </p>
-          </div>
-          <div className="bg-white/5 p-6 rounded-lg">
-            <Globe2 className="h-8 w-8 text-yellow-400 mb-4" />
-            <h3 className="text-white font-medium mb-2">Templates Prontos</h3>
-            <p className="text-neutral-300 text-sm">
-              Currículos, portfólios e emails que já ajudaram dezenas de devs
-            </p>
-          </div>
-          <div className="bg-white/5 p-6 rounded-lg">
-            <Globe2 className="h-8 w-8 text-[#FF4B8C] mb-4" />
-            <h3 className="text-white font-medium mb-2">Mentoria em Grupo</h3>
-            <p className="text-neutral-300 text-sm">
-              Encontros mensais para resolver dúvidas e compartilhar
-              experiências
-            </p>
-          </div>
-        </div>
-        <Link
-          href={`${socials.newsletter}/subscribe?ref=devnagringa`}
-          className="block"
-        >
-          <Button className="w-full md:w-auto">
-            Comece sua jornada internacional
-            <Rocket className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-      </div>
-    ),
-  },
-  {
-    title: "Comunidade",
-    date: "Junho 2024",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Faça parte de uma rede de desenvolvedores brasileiros compartilhando
-          conhecimento e oportunidades
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-white font-medium mb-2">Networking Ativo</h3>
-            <p className="text-neutral-300 text-sm">
-              Conecte-se com devs que já trabalham em empresas internacionais
-            </p>
-          </div>
-          <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-white font-medium mb-2">Vagas Exclusivas</h3>
-            <p className="text-neutral-300 text-sm">
-              Acesso a oportunidades compartilhadas pela própria comunidade
-            </p>
-          </div>
-        </div>
-        <Link
-          href={`${socials.newsletter}/subscribe?ref=devnagringa`}
-          className="block"
-        >
-          <Button variant="outline" className="w-full md:w-auto">
-            Entre para a comunidade
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-      </div>
-    ),
+    content: <MentorshipSection newsletterUrl={socials.newsletter} />,
   },
   {
     title: "Depoimentos",

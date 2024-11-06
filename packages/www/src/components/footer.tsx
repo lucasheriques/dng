@@ -68,10 +68,14 @@ export function Footer() {
               target="_blank"
             >
               <Button size="xl">
-                Participar das mentorias
+                Participar da mentoria
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
+            <p className="text-base text-gray-300 mt-6">
+              Para fazer parte, basta se inscrever no plano pago da newsletter.
+              Os detalhes serão enviados por e-mail.
+            </p>
           </div>
         </div>
 
