@@ -35,9 +35,12 @@ export default function Features() {
               </h2>
               <p className="mt-6 text-lg/8 text-gray-300">
                 Faça parte de uma comunidade vibrante de devs brasileiros. Tenha
-                acesso a conteúdo exclusivo sobre carreira internacional e
-                acelere sua jornada rumo às melhores oportunidades do mercado
-                global.
+                acesso a conteúdo exclusivo sobre a carreira na engenharia de
+                software.
+              </p>
+              <p className="mt-6 text-lg/8 text-gray-300">
+                Seja para você que quer crescer para se tornar sênior ou staff,
+                ou pra quem esteja buscando uma oportunidade no exterior.
               </p>
             </div>
 

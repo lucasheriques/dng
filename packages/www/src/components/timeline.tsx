@@ -72,6 +72,41 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div className="w-full bg-slate-950 md:px-10" ref={containerRef}>
+      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+        <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+          Por que eu criei o Dev na Gringa?
+        </h2>
+        <div className="prose dark:prose-invert text-lg">
+          <p>
+            Eu sempre quis produzir conteúdo para ajudar os outros, mas nunca
+            tinha a certeza de como começar.
+          </p>
+          <p>
+            O conselho que finalmente funcionou pra mim foi: escrever o que eu
+            gostaria de saber 2 anos atrás.
+          </p>
+          <p>
+            Conforme eu escrevi mais, fui criando uma comunidade para pessoas
+            que tem interesses comuns:{" "}
+            <span className="font-bold">crescer na carreira</span> e{" "}
+            <span className="font-bold">
+              trabalhar para empresas internacionais.
+            </span>
+          </p>
+          <p>
+            Desde então, minha motivação cresceu de não apenas escrever, mas
+            criar uma comunidade onde essas pessoas possam ajudar umas as outras
+            e crescer juntos.
+          </p>
+          <p>
+            Aqui em baixo você pode ver a linha do tempo da nossa história.{" "}
+            <span className="font-bold text-primary">
+              E esse é só o começo.
+            </span>
+          </p>
+        </div>
+      </div>
+
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div

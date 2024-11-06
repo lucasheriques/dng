@@ -18,7 +18,7 @@ export function ArticleCard({
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white/5 p-6 rounded-lg hover:bg-white/10 transition-colors"
+      className="block bg-white/5 p-6 rounded-lg hover:bg-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
       {description && (
@@ -26,7 +26,7 @@ export function ArticleCard({
       )}
       <div className="flex items-center gap-3">
         {views && (
-          <span className="text-primary text-xs">+{views} leitores</span>
+          <span className="text-primary text-xs">+{views} visualizações</span>
         )}
         {readingTime && (
           <>

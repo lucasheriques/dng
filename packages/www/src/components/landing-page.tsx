@@ -9,46 +9,11 @@ import { Timeline } from "@/components/timeline";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { socials } from "@/lib/constants";
+import { POPULAR_ARTICLES, socials } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe2, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const POPULAR_ARTICLES = [
-  {
-    link: "https://newsletter.nagringa.dev/p/os-maiores-salarios-do-brasil-para",
-    title: "Os maiores salários do Brasil para engenheiros de software",
-    description:
-      "Entenda porque existem tanta diferença entre salários de empresas, e o modelo trimodal de salários para engenheiros de software.",
-    readingTime: "7min",
-    views: "4000",
-  },
-  {
-    link: "https://newsletter.nagringa.dev/p/dev-na-gringa-contratacao-impostos-hardware",
-    title: "Dev na Gringa: contratação, impostos, hardware e começando do zero",
-    description:
-      "Como foi a questão burocrática no meu trabalho pra fora desde 2020. E o que eu faria se estivesse começando do zero.",
-    readingTime: "9min",
-    views: "1000",
-  },
-  {
-    link: "https://newsletter.nagringa.dev/p/processo-seletivo-vagas-engenharia-de-software-na-brex",
-    title: "O processo seletivo para vagas de engenharia de software na Brex",
-    description:
-      "Todas as etapas do processo seletivo para vagas de engenharia de software na Brex, o que esperar em cada uma delas, e como se preparar.",
-    readingTime: "11min",
-    views: "1500",
-  },
-  {
-    link: "https://newsletter.nagringa.dev/p/como-eu-virei-um-dev-na-gringa",
-    title: "Dev na Gringa: Como Encontrar Vagas e Salários",
-    description:
-      "Como eu me tornei um dev na gringa. Onde encontrar vagas, salários, e conhecimentos necessários.",
-    readingTime: "6min",
-    views: "2000",
-  },
-];
 
 const data = [
   {
@@ -57,13 +22,11 @@ const data = [
     content: (
       <div className="space-y-8">
         <div className="prose dark:prose-invert">
+          <p>Tudo começou com a newsletter.</p>
           <p>
-            Eu sempre quis produzir conteúdo para ajudar os outros, mas nunca
-            tinha a certeza de como começar.
-          </p>
-          <p>
-            O conselho que finalmente funcionou pra mim foi: escrever o que eu
-            gostaria de saber 2 anos atrás.
+            Apesar de texto não ser tão popular no Brasil quanto outros
+            conteúdos visuais (vídeos, fotos, etc), eu acho que é uma ferramenta
+            muito poderosa para compartilhar conhecimento
           </p>
           <p>
             A maior parte desses artigos serão de graça, pra sempre. Pois o meu
@@ -389,9 +352,7 @@ export function LandingPage() {
                 <Button variant="ghost">Comunidade</Button>
               </Link>
               <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-                <Button className="bg-[#5CFFE1] hover:bg-[#5CFFE1]/90 text-[#0A0118]">
-                  Participar
-                </Button>
+                <Button size="xl">Participar</Button>
               </Link>
             </div>
           </nav>
@@ -445,7 +406,7 @@ export function LandingPage() {
               </Button>
             </Link>
             <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
-              <Button variant="outline" className="h-12 px-6 text-lg">
+              <Button variant="outline" size="xl">
                 Veja o conteúdo gratuito
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
