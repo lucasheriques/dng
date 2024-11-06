@@ -399,7 +399,7 @@ export function LandingPage() {
                 opacity: { delay: 0.9, duration: 0.3 },
                 filter: { delay: 0.9, duration: 0.3 },
               }}
-              className="bg-gradient-to-r from-primary via-yellow-400 to-accent-secondary text-transparent bg-clip-text inline-block"
+              className="bg-gradient-to-r from-primary via-yellow-400 to-accent-secondary text-transparent bg-clip-text inline-block animate-gradient"
             >
               mundo inteiro
             </motion.span>

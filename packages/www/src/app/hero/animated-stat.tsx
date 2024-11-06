@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface AnimatedStatProps {
   value: number;
@@ -16,38 +16,42 @@ export function AnimatedStat({
   color,
   duration = 1.5,
 }: AnimatedStatProps) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref);
+  const ref = useRef<HTMLDivElement>(null);
+  const countRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 60,
+    stiffness: 100,
+  });
 
   useEffect(() => {
-    if (isInView && !hasAnimated) {
-      let start = 0;
-      const increment = value / (duration * 60); // 60fps
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= value) {
-          setCount(value);
-          setHasAnimated(true);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 1000 / 60);
-
-      return () => clearInterval(timer);
+    if (isInView) {
+      motionValue.set(value);
     }
-  }, [value, duration, isInView, hasAnimated]);
+  }, [motionValue, isInView, value]);
+
+  useEffect(
+    () =>
+      springValue.on("change", (latest) => {
+        if (countRef.current) {
+          countRef.current.textContent = `${Math.round(latest)}+`;
+        }
+      }),
+    [springValue]
+  );
 
   return (
     <motion.div
       ref={ref}
-      className="text-center group "
+      className="text-center group"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.2 }}
     >
-      <div className={`text-3xl font-bold ${color}`}>{count}+</div>
+      <div ref={countRef} className={`text-3xl font-bold ${color}`}>
+        0+
+      </div>
       <div className="text-white/60">{label}</div>
     </motion.div>
   );
