@@ -1,5 +1,4 @@
 "use client";
-import About from "@/components/about";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -20,7 +19,7 @@ const TimelineCircle = ({
 }) => {
   const circleTransform = useTransform(
     scrollYProgress,
-    [index / total, (index + 0.2) / total],
+    [index / total, (index + 0.6) / total],
     ["rgb(229 229 229)", "#ff4d8e"]
   );
 
@@ -73,7 +72,6 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div className="w-full bg-slate-950 md:px-10" ref={containerRef}>
-      <About />
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-10 md:gap-10">

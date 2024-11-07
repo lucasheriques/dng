@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedStat } from "@/app/hero/animated-stat";
+import About from "@/components/about";
 import { ArticleCard } from "@/components/article-card";
 import { ExpandableCard } from "@/components/expandable-card";
 import Features from "@/components/features";
@@ -368,6 +369,7 @@ export function LandingPage() {
       </div>
 
       <Features />
+      <About />
       <Timeline data={data} />
       <Footer />
     </div>
