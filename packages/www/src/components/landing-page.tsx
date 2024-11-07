@@ -267,18 +267,18 @@ export function LandingPage() {
           transition={{ duration: 0.3, delay: 0.1 }}
         >
           <nav className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="items-center gap-2 flex">
               <Globe2 className="h-6 w-6 text-[#5CFFE1]" />
               <span className="font-bold text-white text-xl">
                 Dev na Gringa
               </span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="items-center gap-4 sm:flex hidden">
               <Link href={`${socials.discord}`}>
                 <Button variant="ghost">Comunidade</Button>
               </Link>
               <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-                <Button size="xl">Participar</Button>
+                <Button>Participar</Button>
               </Link>
             </div>
           </nav>
@@ -326,13 +326,13 @@ export function LandingPage() {
             transition={{ duration: 0.3, delay: 2.1 }} // Delayed to appear after text
           >
             <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-              <Button className="h-12 px-6 text-lg min-w-full">
+              <Button className="min-w-full" size="xl">
                 Participe das mentorias
                 <Rocket className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
-              <Button variant="outline" size="xl">
+              <Button variant="outline" size="xl" className="min-w-full">
                 Veja o conteúdo gratuito
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
