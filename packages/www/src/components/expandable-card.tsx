@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,9 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import * as Dialog from "@radix-ui/react-dialog";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
+import { AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 interface ExpandableCardProps {
@@ -29,10 +35,10 @@ export function ExpandableCard({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Trigger asChild>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
         <button type="button" className="rounded-xl text-left outline-primary">
-          <Card className="w-full max-w-md cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
+          <Card className="w-full {fullContent}md cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
             <CardHeader>
               {title && (
                 <CardTitle className="text-white group-hover:text-[#5CFFE1] transition-colors">
@@ -49,64 +55,27 @@ export function ExpandableCard({
             </div>
           </Card>
         </button>
-      </Dialog.Trigger>
+      </DialogTrigger>
 
       <AnimatePresence>
         {isOpen && (
-          <Dialog.Portal forceMount>
-            <Dialog.Overlay asChild>
-              <motion.div
-                className="fixed inset-0 bg-slate-950/95 z-50 backdrop-blur-sm"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              />
-            </Dialog.Overlay>
-            <Dialog.Content asChild>
-              <motion.div
-                className="fixed inset-0 z-50 flex items-center justify-center"
-                initial={{ scale: 0.5, y: 100, opacity: 0 }}
-                animate={{ scale: 1, y: 0, opacity: 1 }}
-                exit={{ scale: 0.5, y: 100, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                  duration: 0.1,
-                }}
-              >
-                <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white/10 backdrop-blur-md border-white/20">
-                  <CardHeader>
-                    <div className="flex justify-between items-center">
-                      {title && (
-                        <Dialog.Title asChild>
-                          <CardTitle className="text-[#5CFFE1] text-2xl">
-                            {title}
-                          </CardTitle>
-                        </Dialog.Title>
-                      )}
-                      <Dialog.Close asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-white/60 hover:text-white"
-                        >
-                          <X className="h-4 w-4" />
-                          <span className="sr-only">Close</span>
-                        </Button>
-                      </Dialog.Close>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="text-white/90">
-                    {fullContent}
-                  </CardContent>
-                  {footer && <CardFooter>{footer}</CardFooter>}
-                </Card>
-              </motion.div>
-            </Dialog.Content>
-          </Dialog.Portal>
+          <DialogPortal forceMount>
+            <DialogOverlay className="fixed inset-0 bg-slate-900/30 z-50 backdrop-blur-sm" />
+            <DialogContent className="bg-slate-950 md:max-w-2xl gap-8">
+              <DialogTitle className="text-[#5CFFE1] text-2xl">
+                {title}
+              </DialogTitle>
+              {fullContent}
+
+              {footer && (
+                <DialogFooter className="items-start sm:justify-start">
+                  {footer}
+                </DialogFooter>
+              )}
+            </DialogContent>
+          </DialogPortal>
         )}
       </AnimatePresence>
-    </Dialog.Root>
+    </Dialog>
   );
 }

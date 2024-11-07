@@ -102,25 +102,22 @@ const data = [
               </div>
             }
             footer={
-              <div className="flex items-center space-x-4">
+              <Link
+                href="https://www.linkedin.com/in/daianegalvao/"
+                target="_blank"
+                className="flex items-center space-x-4"
+              >
                 <Avatar>
-                  <AvatarImage src="/reviews/daiane.jpeg" />
+                  <AvatarImage src="/reviews/daiane.jpeg" alt="Daiane Galvão" />
                   <AvatarFallback>DG</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="font-semibold text-white">
-                    <Link
-                      href="https://www.linkedin.com/in/daianegalvao/"
-                      target="_blank"
-                    >
-                      Daiane Galvão
-                    </Link>
-                  </p>
+                  <p className="font-semibold text-white">Daiane Galvão</p>
                   <p className="text-sm text-white/60">
                     Senior Software Engineer @ Hotmart
                   </p>
                 </div>
-              </div>
+              </Link>
             }
           />
           <ExpandableCard
@@ -167,7 +164,10 @@ const data = [
             footer={
               <div className="flex items-center space-x-4">
                 <Avatar>
-                  <AvatarImage src="/reviews/matheus.jpeg" />
+                  <AvatarImage
+                    src="/reviews/matheus.jpeg"
+                    alt="Matheus Gomes"
+                  />
                   <AvatarFallback>MG</AvatarFallback>
                 </Avatar>
                 <div>
