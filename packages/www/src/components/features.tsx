@@ -59,7 +59,7 @@ export default function Features() {
                     <dt className="ml-9 inline-block font-semibold text-white">
                       <feature.icon
                         aria-hidden="true"
-                        className="absolute left-1 top-1 h-5 w-5 text-indigo-500"
+                        className="absolute left-1 top-1 h-5 w-5 text-accent-secondary"
                       />
                       {feature.name}
                     </dt>{" "}
