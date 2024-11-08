@@ -18,7 +18,7 @@ import Link from "next/link";
 const comunidade = [
   { name: "Newsletter", href: socials.newsletter, icon: Mail },
   { name: "Discord", href: socials.discord, icon: MessageSquare },
-  { name: "Fale comigo", href: socials.discord, icon: PhoneCall },
+  { name: "Fale comigo", href: socials.calendar, icon: PhoneCall },
 ];
 const mentoria = [
   {
