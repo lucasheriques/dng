@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { Globe2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import HeroImage from "../../public/hero.png";
 
 export function LandingPage() {
   return (
@@ -38,11 +39,12 @@ export function LandingPage() {
           }}
         >
           <Image
-            src="/hero.png"
+            src={HeroImage}
             alt="Mapa mundi artístico com Brasil em destaque"
             fill
             className="object-cover opacity-90"
             priority
+            placeholder="blur"
           />
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118] via-[#0A0118]/50 to-transparent" />

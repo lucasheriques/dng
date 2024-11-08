@@ -14,6 +14,7 @@ export const socials = {
   resume: "https://cv.lucasfaria.dev",
   calendar: "https://cal.com/lucasfaria",
   personalWebsite: "https://lucasfaria.dev",
+  whatsapp: "https://wa.me/5531982092772",
 };
 
 export const POPULAR_ARTICLES = [

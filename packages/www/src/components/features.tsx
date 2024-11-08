@@ -1,5 +1,6 @@
 import { ChartNoAxesCombined, Network, Newspaper } from "lucide-react";
 import Image from "next/image";
+import CommunityImage from "../../public/community.png";
 
 const features = [
   {
@@ -54,7 +55,8 @@ export default function Features() {
 
             <Image
               alt="Comunidade de devs brasileiros."
-              src="/community.png"
+              src={CommunityImage}
+              placeholder="blur"
               width={2432}
               height={1442}
               className="relative -z-20 min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-[64rem] lg:max-w-none"

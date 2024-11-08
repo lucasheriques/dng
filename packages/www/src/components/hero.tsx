@@ -50,9 +50,9 @@ export default function Hero() {
         <Link
           href="https://www.linkedin.com/feed/update/urn:li:activity:7257725748344438784?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7257725748344438784%2C7257748302866071552%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7257725748344438784%2C7257751314724491264%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287257748302866071552%2Curn%3Ali%3Aactivity%3A7257725748344438784%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287257751314724491264%2Curn%3Ali%3Aactivity%3A7257725748344438784%29"
           target="_blank"
-          className="motion-preset-typewriter-[52] motion-duration-[12s]"
+          className="motion-preset-typewriter-[42] motion-duration-[10s]"
         >
-          prometo que não estou tentando vender nenhuma ilusão
+          prometo que não tô vendendo nenhuma ilusão
         </Link>
       </Badge>
       <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
@@ -70,7 +70,7 @@ export default function Hero() {
           mundo inteiro
         </motion.span>
       </h1>
-      <h2 className="text-xl text-white/80 mb-8 max-w-2xl">
+      <h2 className="text-xl text-slate-200 mb-8 max-w-2xl">
         <AnimatedText
           text="Sua jornada como dev não precisa ter fronteiras. Junte-se a uma comunidade de desenvolvedores brasileiros que estão conquistando oportunidades globais e crescendo juntos."
           delay={0.9}
