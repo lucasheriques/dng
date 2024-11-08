@@ -80,11 +80,11 @@ export default function About() {
               <li className="flex gap-x-3">
                 <SearchIcon
                   aria-hidden="true"
-                  className="mt-1 h-5 w-5 flex-none text-primary"
+                  className="mt-1 h-5 w-5 flex-none text-primary motion-preset-pulse motion-duration-[3s]"
                 />
                 <span>
-                  <strong className="font-semibold text-white">
-                    Pesquisável.
+                  <strong className="font-semibold text-white bg-primary/40 px-1 rounded">
+                    Pesquisável
                   </strong>{" "}
                   Meu conteúdo é composto primariamente de artigos e imagens. O
                   motivo é que eu quero que ele seja acessível: você pode
@@ -95,10 +95,12 @@ export default function About() {
               <li className="flex gap-x-3">
                 <ListCheck
                   aria-hidden="true"
-                  className="mt-1 h-5 w-5 flex-none text-primary"
+                  className="mt-1 h-5 w-5 flex-none text-primary motion-preset-stretch motion-duration-[1s]"
                 />
                 <span>
-                  <strong className="font-semibold text-white">Conciso.</strong>{" "}
+                  <strong className="font-semibold text-white bg-lime-400/60 px-1 rounded">
+                    Conciso
+                  </strong>{" "}
                   Meu conteúdo é conciso e direto ao ponto. Gasto 5-10h por
                   artigo entre pesquisa, escrita e revisão. E publico apenas o
                   que é mais importante para que você se torne um(a) melhor
@@ -108,11 +110,11 @@ export default function About() {
               <li className="flex gap-x-3">
                 <ConciergeBell
                   aria-hidden="true"
-                  className="mt-1 h-5 w-5 flex-none text-primary"
+                  className="mt-1 h-5 w-5 flex-none text-primary motion-preset-seesaw"
                 />
                 <span>
-                  <strong className="font-semibold text-white">
-                    Feito sob medida.
+                  <strong className="font-semibold text-white bg-rose-600/60 px-1 rounded">
+                    Feito sob medida
                   </strong>{" "}
                   Eu trabalho em tempo integral como engenheiro de software. E
                   só vou publicar conteúdos que eu tenha experiência prática, ou
