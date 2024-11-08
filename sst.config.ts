@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference path="./.sst/platform/config.d.ts" />
-
 export default $config({
   app(input) {
     return {
@@ -13,6 +13,7 @@ export default $config({
               ? "lucasfaria-prod"
               : "lucasfaria-dev",
         },
+        cloudflare: true,
       },
     };
   },
@@ -20,7 +21,6 @@ export default $config({
     await import("./infra/storage");
     const api = await import("./infra/api");
     await import("./infra/www");
-
     return {
       api: api.myApi.url,
     };
