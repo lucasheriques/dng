@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { socials } from "@/lib/constants";
 import { motion } from "framer-motion";
-import { ArrowRight, Rocket } from "lucide-react";
+import { ArrowRight, Link2, Rocket } from "lucide-react";
 import Link from "next/link";
 
 const AnimatedText = ({
@@ -41,19 +41,20 @@ const AnimatedText = ({
 
 export default function Hero() {
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
+    <div className="w-full max-w-7xl mx-auto px-4 pt-24 relative z-10">
+      <Badge
+        variant="outline"
+        className="border-[#5CFFE1]/30 text-[#5CFFE1] mb-6 backdrop-blur-sm motion-delay-[500ms] motion-preset-fade"
       >
-        <Badge
-          variant="outline"
-          className="border-[#5CFFE1]/30 text-[#5CFFE1] mb-6 backdrop-blur-sm"
+        <Link2 className="mr-2 h-4 w-4" />
+        <Link
+          href="https://www.linkedin.com/feed/update/urn:li:activity:7257725748344438784?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7257725748344438784%2C7257748302866071552%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7257725748344438784%2C7257751314724491264%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287257748302866071552%2Curn%3Ali%3Aactivity%3A7257725748344438784%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287257751314724491264%2Curn%3Ali%3Aactivity%3A7257725748344438784%29"
+          target="_blank"
+          className="motion-preset-typewriter-[52] motion-duration-[12s]"
         >
-          +100 devs brasileiros na comunidade
-        </Badge>
-      </motion.div>
+          prometo que não estou tentando vender nenhuma ilusão
+        </Link>
+      </Badge>
       <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
         <AnimatedText text="Do Brasil para o" delay={0.3} />
         <br />
@@ -64,32 +65,34 @@ export default function Hero() {
             opacity: { delay: 0.9, duration: 0.3 },
             filter: { delay: 0.9, duration: 0.3 },
           }}
-          className="bg-gradient-to-r from-primary via-yellow-400 to-[#FF4B8C] text-transparent bg-clip-text inline-block"
+          className="bg-gradient-to-r from-primary via-yellow-400 to-accent-secondary text-transparent bg-clip-text inline-block animate-gradient"
         >
           mundo inteiro
         </motion.span>
       </h1>
-      <p className="text-xl text-white/80 mb-8 max-w-2xl">
+      <h2 className="text-xl text-white/80 mb-8 max-w-2xl">
         <AnimatedText
-          text="Sua jornada como dev não precisa ter fronteiras. Junte-se a uma comunidade de desenvolvedores brasileiros que estão conquistando oportunidades globais e crescendo na carreira."
+          text="Sua jornada como dev não precisa ter fronteiras. Junte-se a uma comunidade de desenvolvedores brasileiros que estão conquistando oportunidades globais e crescendo juntos."
           delay={0.9}
         />
-      </p>
+      </h2>
       <motion.div
         className="flex flex-col sm:flex-row gap-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 2.1 }} // Delayed to appear after text
       >
-        <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-          <Button className="h-12 px-6 text-lg min-w-full">
-            Participe das mentorias
-            <Rocket className="ml-2 h-5 w-5" />
-          </Button>
-        </Link>
-        <Button variant="outline" className="h-12 px-6 text-lg">
-          Veja o conteúdo gratuito
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+        <Button size="xl" asChild className="min-w-80">
+          <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
+            Participe da mentoria
+            <Rocket className="ml-2 h-5 w-5 group-hover:motion-translate-x-in-[-134%] group-hover:motion-translate-y-in-[164%] group-hover:h-8 group-hover:w-8" />
+          </Link>
+        </Button>
+        <Button variant="outline" size="xl" asChild className="min-w-80">
+          <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
+            Veja o conteúdo gratuito
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </Button>
       </motion.div>
 
@@ -102,7 +105,7 @@ export default function Hero() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl w-full">
           <AnimatedStat
-            value={800}
+            value={850}
             label="inscritos na newsletter"
             color="text-primary"
           />
@@ -118,6 +121,6 @@ export default function Hero() {
           />
         </div>
       </motion.div>
-    </>
+    </div>
   );
 }

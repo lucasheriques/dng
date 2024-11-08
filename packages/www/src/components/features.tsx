@@ -30,8 +30,16 @@ export default function Features() {
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
             <div className="lg:row-start-2 lg:max-w-md">
               <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Uma comunidade que te ajuda a conquistar oportunidades globais e
-                crescer profissionalmente
+                Uma{" "}
+                <span className="bg-pink-500/40 px-1 rounded">comunidade</span>{" "}
+                que te ajuda a conquistar{" "}
+                <span className="bg-gradient-to-r from-primary/30 to-accent-secondary/30 rounded">
+                  oportunidades globais
+                </span>{" "}
+                e{" "}
+                <span className="bg-primary/40 px-1 rounded">
+                  crescer profissionalmente
+                </span>
               </h2>
               <p className="mt-6 text-lg/8 text-gray-300">
                 Faça parte de uma comunidade vibrante de devs brasileiros. Tenha

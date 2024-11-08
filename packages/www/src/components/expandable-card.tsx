@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Card,
   CardContent,
@@ -15,9 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
-import { AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 
 interface ExpandableCardProps {
   title?: string;
@@ -32,10 +28,8 @@ export function ExpandableCard({
   fullContent,
   footer,
 }: ExpandableCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog>
       <DialogTrigger asChild>
         <button type="button" className="rounded-xl text-left outline-primary">
           <Card className="w-full cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
@@ -57,25 +51,19 @@ export function ExpandableCard({
         </button>
       </DialogTrigger>
 
-      <AnimatePresence>
-        {isOpen && (
-          <DialogPortal forceMount>
-            <DialogOverlay className="fixed inset-0 bg-slate-900/30 z-50 backdrop-blur-sm" />
-            <DialogContent className="bg-slate-950 md:max-w-2xl gap-8">
-              <DialogTitle className="text-[#5CFFE1] text-2xl">
-                {title}
-              </DialogTitle>
-              {fullContent}
+      <DialogPortal>
+        <DialogOverlay className="fixed inset-0 bg-slate-900/30 z-50 backdrop-blur-sm" />
+        <DialogContent className="bg-slate-950 md:max-w-2xl gap-8">
+          <DialogTitle className="text-[#5CFFE1] text-2xl">{title}</DialogTitle>
+          {fullContent}
 
-              {footer && (
-                <DialogFooter className="items-start sm:justify-start">
-                  {footer}
-                </DialogFooter>
-              )}
-            </DialogContent>
-          </DialogPortal>
-        )}
-      </AnimatePresence>
+          {footer && (
+            <DialogFooter className="items-start sm:justify-start">
+              {footer}
+            </DialogFooter>
+          )}
+        </DialogContent>
+      </DialogPortal>
     </Dialog>
   );
 }

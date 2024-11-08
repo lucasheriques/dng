@@ -1,4 +1,4 @@
-import { BookOpen, Rocket, Target, Users } from "lucide-react";
+import { BookOpen, Network, Target, Users } from "lucide-react";
 import Link from "next/link";
 import { MentorshipCard } from "./mentorship-card";
 import { Button } from "./ui/button";
@@ -34,9 +34,18 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
 
   return (
     <div>
-      <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-base font-normal mb-8">
-        Acelere sua carreira com mentoria personalizada e recursos exclusivos.
-      </p>
+      <div className="prose dark:prose-invert mb-8">
+        <p>
+          Com a demanda do conteúdo, vi uma oportunidade algo que eu sempre
+          quis. Uma comunidade exclusiva para profissionais de TI que estão
+          buscando crescimento profissional e pessoal.
+        </p>
+        <p>
+          Um lugar onde podemos compartilhar experiências, dúvidas, e
+          oportunidades.
+        </p>
+        <p>E é daqui que nasceu a mentoria do Dev na Gringa.</p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {mentorshipItems.map((item, index) => (
           <MentorshipCard
@@ -48,10 +57,10 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
           />
         ))}
       </div>
-      <Button className="w-full md:w-auto" asChild>
+      <Button className="w-full md:w-auto min-w-64" asChild>
         <Link href={`${newsletterUrl}/subscribe?ref=devnagringa`}>
-          Comece sua jornada internacional
-          <Rocket className="ml-2 h-4 w-4" />
+          Faça parte da mentoria
+          <Network className="ml-2 h-4 w-4" />
         </Link>
       </Button>
     </div>

@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { POPULAR_ARTICLES, socials } from "@/lib/constants";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const tools = [
-  { name: "Calculadora de Salário Líquido CLT vs PJ", href: "#" },
+  { name: "[Em breve] Calculadora de Salário Líquido CLT vs PJ", href: "#" },
   { name: "Newsletter", href: socials.newsletter },
 ];
 
@@ -53,28 +52,39 @@ export function Footer() {
         {/* CTA Section */}
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-[#5CFFE1] text-lg font-semibold">
-            Junte-se à comunidade
+            Faça parte da mentoria
           </h2>
           <p className="mt-2 text-4xl font-semibold text-white">
             Desenvolva sua carreira internacional em engenharia de software
           </p>
           <p className="mt-6 text-lg text-gray-300">
-            Uma comunidade para profissionais de TI brasileiros que querem
-            crescer na carreira e se destacar no mercado internacional.
+            Você receberá um e-mail com os detalhes para se inscrever.
+            <br />
+            <a
+              href="https://newsletter.nagringa.dev/about#§beneficios-para-assinantes-pagos"
+              className="text-accent-secondary font-semibold hover:text-[#5CFFE1]/90 transition-colors"
+            >
+              Confira os benefícios aqui.
+            </a>
           </p>
           <div className="mt-8">
-            <Button size="xl" asChild>
+            <Button
+              size="xl"
+              asChild
+              className="group group-hover:motion-preset-slide-right-lg motion-duration-1000"
+            >
               <Link
                 href={`${socials.newsletter}/subscribe?ref=devnagringa`}
                 target="_blank"
               >
                 Participar da mentoria
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <div className="motion-preset-float bg-white/30 text-black rounded-full w-8 h-8 flex items-center justify-center">
+                  🛸
+                </div>
               </Link>
             </Button>
-            <p className="text-base text-gray-300 mt-6">
-              Para fazer parte, basta se inscrever no plano pago da newsletter.
-              Os detalhes serão enviados por e-mail.
+            <p className="text-xs text-gray-300">
+              Só para os devs de outro mundo.
             </p>
           </div>
         </div>
