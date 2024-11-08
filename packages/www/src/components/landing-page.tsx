@@ -48,15 +48,15 @@ const data = [
             />
           ))}
         </div>
-        <Link
-          href={`${socials.newsletter}/subscribe?ref=devnagringa`}
-          className="block"
-        >
-          <Button className="w-full md:w-auto" variant="outline">
+        <Button className="w-full md:w-auto" variant="outline" asChild>
+          <Link
+            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            className="flex items-center"
+          >
             Receba os artigos toda semana
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     ),
   },
@@ -163,28 +163,26 @@ const data = [
               </div>
             }
             footer={
-              <div className="flex items-center space-x-4">
-                <Avatar>
-                  <AvatarImage
-                    src="/reviews/matheus.jpeg"
-                    alt="Matheus Gomes"
-                  />
-                  <AvatarFallback>MG</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-semibold text-white">
-                    <Link
-                      href="https://www.linkedin.com/in/matusca96/"
-                      target="_blank"
-                    >
-                      Matheus Gomes
-                    </Link>
-                  </p>
-                  <p className="text-sm text-white/60">
-                    Technical Lead @ MoOngy
-                  </p>
+              <Link
+                href="https://www.linkedin.com/in/matusca96/"
+                target="_blank"
+              >
+                <div className="flex items-center space-x-4">
+                  <Avatar>
+                    <AvatarImage
+                      src="/reviews/matheus.jpeg"
+                      alt="Matheus Gomes"
+                    />
+                    <AvatarFallback>MG</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-semibold text-white">Matheus Gomes</p>
+                    <p className="text-sm text-white/60">
+                      Technical Lead @ MoOngy
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             }
           />
         </div>
@@ -275,12 +273,14 @@ export function LandingPage() {
               </span>
             </div>
             <div className="items-center gap-4 sm:flex hidden">
-              <Link href={`${socials.discord}`}>
-                <Button variant="ghost">Comunidade</Button>
-              </Link>
-              <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-                <Button>Participar</Button>
-              </Link>
+              <Button variant="ghost" asChild>
+                <Link href={`${socials.discord}`}>Comunidade</Link>
+              </Button>
+              <Button asChild>
+                <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
+                  Participar
+                </Link>
+              </Button>
             </div>
           </nav>
         </motion.header>
@@ -326,18 +326,18 @@ export function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 2.1 }} // Delayed to appear after text
           >
-            <Link href={`${socials.newsletter}/subscribe?ref=devnagringa`}>
-              <Button className="min-w-full" size="xl">
+            <Button size="xl" asChild>
+              <Link href={`${socials.newsletter}/subscribe?ref=d  evnagringa`}>
                 Participe das mentorias
                 <Rocket className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
-              <Button variant="outline" size="xl" className="min-w-full">
+              </Link>
+            </Button>
+            <Button variant="outline" size="xl" asChild>
+              <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
                 Veja o conteúdo gratuito
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </motion.div>
 
           {/* Stats */}

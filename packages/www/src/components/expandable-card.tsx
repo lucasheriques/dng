@@ -38,7 +38,7 @@ export function ExpandableCard({
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <button type="button" className="rounded-xl text-left outline-primary">
-          <Card className="w-full {fullContent}md cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
+          <Card className="w-full cursor-pointer group transition-all duration-300 bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:shadow-lg">
             <CardHeader>
               {title && (
                 <CardTitle className="text-white group-hover:text-[#5CFFE1] transition-colors">

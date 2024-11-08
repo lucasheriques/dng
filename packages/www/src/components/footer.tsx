@@ -63,15 +63,15 @@ export function Footer() {
             crescer na carreira e se destacar no mercado internacional.
           </p>
           <div className="mt-8">
-            <Link
-              href={`${socials.newsletter}/subscribe?ref=devnagringa`}
-              target="_blank"
-            >
-              <Button size="xl">
+            <Button size="xl" asChild>
+              <Link
+                href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+                target="_blank"
+              >
                 Participar da mentoria
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
             <p className="text-base text-gray-300 mt-6">
               Para fazer parte, basta se inscrever no plano pago da newsletter.
               Os detalhes serão enviados por e-mail.

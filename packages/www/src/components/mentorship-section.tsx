@@ -48,15 +48,12 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
           />
         ))}
       </div>
-      <Link
-        href={`${newsletterUrl}/subscribe?ref=devnagringa`}
-        className="block"
-      >
-        <Button className="w-full md:w-auto">
+      <Button className="w-full md:w-auto" asChild>
+        <Link href={`${newsletterUrl}/subscribe?ref=devnagringa`}>
           Comece sua jornada internacional
           <Rocket className="ml-2 h-4 w-4" />
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </div>
   );
 }
