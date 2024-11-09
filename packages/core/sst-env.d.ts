@@ -23,7 +23,7 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "www": {
+    "Www": {
       "type": "sst.aws.Nextjs"
       "url": string
     }
