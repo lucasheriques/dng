@@ -1,6 +1,6 @@
 import { ChartNoAxesCombined, Network, Newspaper } from "lucide-react";
 import Image from "next/image";
-import CommunityImage from "../../public/community.png";
+import CommunityImage from "../../public/community.webp";
 
 const features = [
   {
@@ -54,11 +54,9 @@ export default function Features() {
             </div>
 
             <Image
-              alt="Comunidade de devs brasileiros."
+              alt="Uma imagem futurista representando uma comunidade de devs brasileiros."
               src={CommunityImage}
               placeholder="blur"
-              width={2432}
-              height={1442}
               className="relative -z-20 min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-[64rem] lg:max-w-none"
             />
 

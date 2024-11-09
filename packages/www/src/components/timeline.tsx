@@ -116,7 +116,7 @@ const data: TimelineEntry[] = [
                 className="flex items-center space-x-4"
               >
                 <Avatar>
-                  <AvatarImage src="/reviews/daiane.jpeg" alt="Daiane Galvão" />
+                  <AvatarImage src="/reviews/daiane.webp" alt="Daiane Galvão" />
                   <AvatarFallback>DG</AvatarFallback>
                 </Avatar>
                 <div>
@@ -177,7 +177,7 @@ const data: TimelineEntry[] = [
                 <div className="flex items-center space-x-4">
                   <Avatar>
                     <AvatarImage
-                      src="/reviews/matheus.jpeg"
+                      src="/reviews/matheus.webp"
                       alt="Matheus Gomes"
                     />
                     <AvatarFallback>MG</AvatarFallback>

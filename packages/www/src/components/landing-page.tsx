@@ -8,7 +8,7 @@ import Hero from "@/components/hero";
 import { Timeline } from "@/components/timeline";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import HeroImage from "../../public/hero.png";
+import HeroImage from "../../public/hero.webp";
 
 export function LandingPage() {
   return (

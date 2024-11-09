@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { POPULAR_ARTICLES, socials } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import FooterHeroImage from "../../public/footer-hero.png";
+import FooterHeroImage from "../../public/footer.webp";
 const tools = [
   { name: "[Em breve] Calculadora de Salário Líquido CLT vs PJ", href: "#" },
   { name: "Newsletter", href: socials.newsletter },
