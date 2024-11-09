@@ -1,4 +1,5 @@
 import { BorderBeam } from "@/components/ui/border-beam";
+import { socials } from "@/lib/constants";
 import {
   BookOpen,
   Network,
@@ -14,14 +15,6 @@ interface MentorshipSectionProps {
   newsletterUrl: string;
 }
 
-interface MentorshipCardProps {
-  children: React.ReactNode;
-}
-
-function MentorshipCard({ children }: MentorshipCardProps) {
-  return <div className="bg-white/5 p-6 rounded-lg">{children}</div>;
-}
-
 const mentorshipItems = [
   {
     tabContent: (
@@ -32,20 +25,48 @@ const mentorshipItems = [
     ),
     title: "Mentoria em Grupo",
     content: (
-      <>
-        <h3 className="text-white font-medium mb-2">Mentoria em Grupo</h3>
-        <p className="text-neutral-300 text-sm mb-4">
+      <section className="prose dark:prose-invert">
+        <h3>Mentoria em Grupo</h3>
+        <p>
           Três encontros mensais para resolver dúvidas e compartilhar
-          experiências. Um deles exclusivamente para System Design.
+          experiências:
         </p>
-        <p className="text-neutral-300 text-sm border-t border-white/10 pt-4">
+        <ul>
+          <li>
+            Uma sessão dedicada exclusivamente para System Design, focada em
+            preparação para entrevistas
+          </li>
+          <li>
+            Duas sessões abertas para discussão de carreira, trabalho remoto,
+            processos seletivos e mais
+          </li>
+          <li>
+            Resumo de cada mentoria disponível publicamente aqui:{" "}
+            <a
+              href="https://mentoria.nagringa.dev"
+              target="_blank"
+              className="underline"
+            >
+              mentoria.nagringa.dev
+            </a>
+          </li>
+        </ul>
+        <p>
           Durante nossos encontros mensais, você terá a oportunidade de discutir
-          desafios reais, receber feedback personalizado e aprender com as
-          experiências de outros profissionais. A sessão dedicada a System
-          Design permite aprofundar em aspectos técnicos cruciais para
-          entrevistas e crescimento profissional.
+          desafios reais, perguntar sobre qualquer assunto relevante e aprender
+          com as experiências de outros profissionais.
         </p>
-      </>
+        <p>
+          <strong>Atenção:</strong> A mentoria em grupo é exclusiva para os{" "}
+          <a
+            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            className="underline"
+            target="_blank"
+          >
+            assinantes pagos da newsletter.
+          </a>
+        </p>
+      </section>
     ),
   },
   {
@@ -57,20 +78,48 @@ const mentorshipItems = [
     ),
     title: "Mentoria Individual",
     content: (
-      <>
-        <h3 className="text-white font-medium mb-2">Mentoria Individual</h3>
-        <p className="text-neutral-300 text-sm mb-4">
-          Sessões personalizadas one-on-one para focar em seus objetivos
-          específicos e acelerar seu desenvolvimento.
+      <section className="prose dark:prose-invert">
+        <h3>Mentoria Individual</h3>
+        <p>Sessões 1:1 personalizadas para os seus objetivos:</p>
+        <ul>
+          <li>
+            Qualquer dúvida sobre entrevistas técnicas, currículo e carreira
+          </li>
+          <li>
+            Elaboração de um plano de crescimento baseado na sua situação hoje e
+            nos seus objetivos.
+          </li>
+          <li>
+            Todas as sessões serão gravadas, resumiadas e disponibilizadas para
+            você.
+          </li>
+        </ul>
+        <p>
+          Eu não posso garantir que eu vou ter todas as respostas pra você.{" "}
+          <strong>
+            Mas eu prometo que vou fazer o possível para te ajudar, com base na
+            minha experiência real.
+          </strong>
         </p>
-        <p className="text-neutral-300 text-sm border-t border-white/10 pt-4">
-          Receba atenção individualizada para suas necessidades específicas.
-          Seja para preparação para entrevistas, revisão de código, planejamento
-          de carreira ou desafios técnicos, as sessões individuais permitem um
-          acompanhamento mais próximo e personalizado do seu desenvolvimento
-          profissional.
+        <p>
+          Apenas 2 vagas disponíveis. Para uma sessão avulsa,{" "}
+          <a
+            href="https://cal.com/lucasfaria/mentoria-individual"
+            className="underline"
+            target="_blank"
+          >
+            marque por aqui.
+          </a>{" "}
+          Para uma sessão recorrente, com desconto no valor anual,{" "}
+          <a
+            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            className="underline"
+            target="_blank"
+          >
+            assine o plano na newsletter.
+          </a>
         </p>
-      </>
+      </section>
     ),
   },
   {
@@ -82,21 +131,34 @@ const mentorshipItems = [
     ),
     title: "Grupo de Responsabilidade",
     content: (
-      <>
-        <h3 className="text-white font-medium mb-2">
-          Grupo de Responsabilidade
-        </h3>
-        <p className="text-neutral-300 text-sm mb-4">
-          Acompanhamento mensal de metas e progresso com outras pessoas. Um
-          pouco de pressão social para você se manter na trilha.
+      <section className="prose dark:prose-invert">
+        <h3>Grupo de Responsabilidade</h3>
+        <p>
+          Encontros mensais para acompanhamento de metas e crescimento
+          profissional:
         </p>
-        <p className="text-neutral-300 text-sm border-t border-white/10 pt-4">
-          Estabeleça metas claras, compartilhe seu progresso e receba suporte
-          contínuo da comunidade. Este grupo fornece a estrutura e motivação
-          necessárias para manter seu desenvolvimento profissional consistente e
-          alcançar seus objetivos de carreira.
+        <ul>
+          <li>Definição e revisão mensal de objetivos claros e alcançáveis</li>
+          <li>Suporte da comunidade para manter consistência nos estudos</li>
+          <li>Compartilhamento de conquistas e aprendizados com o grupo</li>
+        </ul>
+        <p>
+          Essa é baseado em uma lição que eu aprendi com a newsletter.{" "}
+          <strong>Um pouco de pressão social</strong> pode ser bem vinda para
+          nos manter no caminho.
         </p>
-      </>
+        <p>
+          Se você já assinou, confira{" "}
+          <a
+            href="https://newsletter.nagringa.dev/p/como-definir-boas-metas-para-a-sua"
+            className="underline"
+            target="_blank"
+          >
+            esse artigo
+          </a>{" "}
+          para entender como definir boas metas.
+        </p>
+      </section>
     ),
   },
   {
@@ -108,19 +170,28 @@ const mentorshipItems = [
     ),
     title: "Conteúdo Exclusivo",
     content: (
-      <>
-        <h3 className="text-white font-medium mb-2">Conteúdo Exclusivo</h3>
-        <p className="text-neutral-300 text-sm mb-4">
-          Guias práticos sobre processos seletivos internacionais e uma
-          comunidade para troca de experiências.
+      <section className="prose dark:prose-invert">
+        <h3>Conteúdo Exclusivo</h3>
+        <p>
+          Biblioteca completa de recursos para impulsionar sua carreira
+          internacional:
         </p>
-        <p className="text-neutral-300 text-sm border-t border-white/10 pt-4">
-          Acesse materiais exclusivos desenvolvidos com base em experiências
-          reais de processos seletivos internacionais. Inclui templates, estudos
-          de caso, dicas práticas e uma biblioteca crescente de recursos para
-          impulsionar sua carreira global.
+        <ul>
+          <li>
+            Artigos e conteúdos exclusivos para assinantes, como dicas de
+            negociação
+          </li>
+          <li>
+            Templates e documentos que podem ser usados para acelerar tua
+            carreira (brag document, currículos, etc)
+          </li>
+          <li>Seleção de todos os livros e cursos que eu já usei</li>
+        </ul>
+        <p>
+          Material desenvolvido com base em experiências reais e constantemente
+          atualizado conforme eu aprendo novos métodos.
         </p>
-      </>
+      </section>
     ),
   },
 ];
@@ -144,7 +215,7 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
         </p>
       </div>
 
-      <Tabs defaultValue={mentorshipItems[0].title} className="mb-8 grid gap-8">
+      <Tabs defaultValue={mentorshipItems[0].title} className="mb-8 grid gap-4">
         <TabsList className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 bg-transparent">
           {mentorshipItems.map((item) => (
             <TabsTrigger
@@ -164,7 +235,7 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
           <TabsContent key={item.title} value={item.title}>
             <div className="relative h-full w-full rounded-xl max-w-full overflow-hidden">
               <BorderBeam />
-              <MentorshipCard>{item.content}</MentorshipCard>
+              <div className="bg-white/5 p-6 rounded-lg">{item.content}</div>
             </div>
           </TabsContent>
         ))}
