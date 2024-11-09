@@ -15,6 +15,14 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Bucket"
     }
+    "PosthogHost": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "PosthogKey": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
     "www": {
       "type": "sst.aws.Nextjs"
       "url": string
