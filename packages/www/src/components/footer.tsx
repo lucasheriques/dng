@@ -96,7 +96,7 @@ export function Footer() {
               </Link>
             </Button>
             <p className="text-xs text-gray-300">
-              Só para os devs de outro mundo.
+              Para os devs deste e de outros mundos também.
             </p>
           </div>
         </div>
