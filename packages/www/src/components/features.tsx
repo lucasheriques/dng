@@ -56,6 +56,8 @@ export default function Features() {
             <Image
               alt="Uma imagem futurista representando uma comunidade de devs brasileiros."
               src={CommunityImage}
+              width={1024}
+              height={1024}
               placeholder="blur"
               className="relative -z-20 min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-[64rem] lg:max-w-none"
             />
