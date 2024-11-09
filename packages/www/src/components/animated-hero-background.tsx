@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import HeroImage from "../../public/hero.webp";
 
-export function AnimatedHeroBackground() {
+export function AnimatedHeroBackground({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <motion.div
       className="absolute inset-0 z-0 overflow-hidden"
@@ -25,14 +27,7 @@ export function AnimatedHeroBackground() {
         },
       }}
     >
-      <Image
-        src={HeroImage}
-        alt="Mapa mundi artístico com Brasil em destaque"
-        fill
-        className="object-cover opacity-90"
-        priority
-        placeholder="blur"
-      />
+      {children}
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118] via-[#0A0118]/50 to-transparent" />
     </motion.div>
