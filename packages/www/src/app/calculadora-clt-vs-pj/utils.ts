@@ -1,6 +1,7 @@
 import { deflate, inflate } from "pako";
+import { FormData } from "./types";
 
-export function compress(data: any): string {
+export function compress(data: FormData) {
   // Remove empty/default values to minimize data size
   const minimalData = Object.fromEntries(
     Object.entries(data).filter(([key, value]) => {
@@ -26,7 +27,7 @@ export function compress(data: any): string {
     .replace(/=+$/, "");
 }
 
-export function decompress(hash: string): any {
+export function decompress(hash: string) {
   try {
     // Add padding if needed
     const base64 = hash
@@ -56,6 +57,6 @@ export function decompress(hash: string): any {
     };
   } catch (e) {
     console.error("Failed to decompress data:", e);
-    return null;
+    return undefined;
   }
 }

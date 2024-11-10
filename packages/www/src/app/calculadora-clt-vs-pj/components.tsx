@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
+import { CalculationResults } from "./types";
 
 const formatCurrency = (value: number) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -93,7 +94,7 @@ export function ResultsAccordion({
   isExpanded,
   onToggle,
 }: {
-  results: any;
+  results: CalculationResults;
   type: "clt" | "pj";
   isExpanded: boolean;
   onToggle: () => void;
@@ -110,7 +111,7 @@ export function ResultsAccordion({
         <Accordion
           type="single"
           value={isExpanded ? "details" : ""}
-          onValueChange={() => onToggle()}
+          onClick={onToggle}
           className="w-full"
         >
           <AccordionItem value="details" className="border-0">

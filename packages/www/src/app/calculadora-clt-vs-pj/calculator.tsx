@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
 import { Share2 } from "lucide-react";
-import { useQueryState } from "nuqs";
 import { useState } from "react";
 import {
   ResultsAccordion,
@@ -11,7 +10,7 @@ import {
   TableInput,
   TableRow,
 } from "./components";
-import { FormData } from "./types";
+import { CalculationResults, FormData } from "./types";
 import { compress } from "./utils";
 
 interface SalaryCalculatorProps {
@@ -19,7 +18,6 @@ interface SalaryCalculatorProps {
 }
 
 export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
-  const [formHash, setFormHash] = useQueryState("d");
   const [formData, setFormData] = useState<FormData>(
     initialData ?? {
       grossSalary: "",
@@ -36,7 +34,21 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
     }
   );
 
-  const [results, setResults] = useState<any>(
+  const defaultFormData: FormData = {
+    grossSalary: "",
+    pjGrossSalary: "",
+    mealAllowance: "",
+    transportAllowance: "",
+    healthInsurance: "",
+    otherBenefits: "",
+    includeFGTS: true,
+    accountingFee: "189",
+    inssContribution: String(1412 * 0.11),
+    taxRate: "10",
+    otherExpenses: "",
+  };
+
+  const [results, setResults] = useState<CalculationResults | null>(
     initialData ? calculateResults(initialData) : null
   );
   const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
@@ -54,9 +66,13 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
 
   const handleShare = async () => {
     const hash = compress(formData);
-    await setFormHash(hash, { replace: true });
 
-    await navigator.clipboard.writeText(window.location.href);
+    const url = new URL(window.location.href);
+    url.searchParams.set("d", hash);
+
+    window.history.replaceState({}, "", url.toString());
+
+    await navigator.clipboard.writeText(url.toString());
 
     setShareButtonText("URL copiada!");
     setTimeout(() => {
@@ -64,20 +80,39 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
     }, 2000);
   };
 
+  const handleClear = () => {
+    setFormData(defaultFormData);
+    setResults(null);
+    // Remove query param and update URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete("d");
+    window.history.replaceState({}, "", url.toString());
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-white p-8 py-24">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-2"
-            onClick={handleShare}
-          >
-            <Share2 className="w-4 h-4" />
-            {shareButtonText}
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-2"
+              onClick={handleClear}
+            >
+              Limpar valores
+            </Button>
+            <Button
+              variant="default"
+              size="sm"
+              className="gap-2"
+              onClick={handleShare}
+            >
+              <Share2 className="w-4 h-4" />
+              {shareButtonText}
+            </Button>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -180,7 +215,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
   );
 }
 
-function calculateResults(formData: FormData) {
+function calculateResults(formData: FormData): CalculationResults | null {
   if (!formData.grossSalary) {
     return null;
   }
