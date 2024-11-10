@@ -1,4 +1,6 @@
 import { Providers } from "@/app/providers";
+import { Footer } from "@/components/footer";
+import Header from "@/components/header";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
@@ -16,9 +18,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased dark`}
+        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased dark
+        selection:bg-teal-500 selection:text-slate-950`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedStat } from "@/app/hero/animated-stat";
+import { AnimatedStat } from "@/app/components/animated-stat";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { socials } from "@/lib/constants";

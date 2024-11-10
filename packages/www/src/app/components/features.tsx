@@ -1,6 +1,6 @@
 import { ChartNoAxesCombined, Network, Newspaper } from "lucide-react";
 import Image from "next/image";
-import CommunityImage from "../../public/community.webp";
+import CommunityImage from "../../../public/community.webp";
 
 const features = [
   {
@@ -59,7 +59,7 @@ export default function Features() {
               width={1024}
               height={1024}
               placeholder="blur"
-              className="relative -z-20 min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-[64rem] lg:max-w-none"
+              className="relative -z-20 min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-[64rem] lg:max-w-none pointer-events-none select-none"
             />
 
             <div className="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">

@@ -240,7 +240,7 @@ const TimelineCircle = ({
   );
 };
 
-export const Timeline = () => {
+const Timeline = () => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -316,3 +316,5 @@ export const Timeline = () => {
     </div>
   );
 };
+
+export default Timeline;

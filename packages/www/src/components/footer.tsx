@@ -43,7 +43,7 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#0A0118]">
+    <footer className="relative">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
@@ -52,7 +52,7 @@ export function Footer() {
             placeholder="blur"
             alt="Mapa mundi digital com efeito cósmico"
             fill
-            className="object-cover opacity-90"
+            className="object-cover opacity-90 pointer-events-none select-none"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118] via-[#0A0118]/80 to-[#0A0118]/60" />
         </div>
