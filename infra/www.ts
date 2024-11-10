@@ -1,7 +1,7 @@
 import { secretsMap } from "./secrets";
 import { bucket } from "./storage";
 
-export const www = new sst.aws.Nextjs("Www", {
+export const www = new sst.aws.Nextjs("www", {
   path: "packages/www",
   domain: {
     name: $app.stage === "production" ? "nagringa.dev" : "staging.nagringa.dev",

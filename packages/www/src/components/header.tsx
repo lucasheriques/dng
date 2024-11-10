@@ -4,6 +4,7 @@ import {
   Calendar,
   ChevronDown,
   FileText,
+  Globe,
   Globe2,
   History,
   Mail,
@@ -11,12 +12,19 @@ import {
   PhoneCall,
   Target,
   UserPlus,
+  Youtube,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const comunidade = [
+  {
+    name: "Como trabalhar pra fora",
+    href: `${socials.newsletter}/t/dev-na-gringa`,
+    icon: Globe,
+  },
   { name: "Newsletter", href: socials.newsletter, icon: Mail },
+  { name: "YouTube", href: socials.youtube, icon: Youtube },
   { name: "Discord", href: socials.discord, icon: MessageSquare },
   { name: "Fale comigo", href: socials.calendar, icon: PhoneCall },
 ];
@@ -107,7 +115,7 @@ export default function Header() {
           <div className="grid gap-y-4 sm:grid-cols-2 gap-x-6 sm:gap-x-8">
             <div>
               <h3 className="text-sm/6 font-medium text-gray-400">
-                Comunidade
+                Comunidade e conteúdo
               </h3>
               <div className="mt-6 flow-root">
                 <div className="-my-2">
@@ -115,7 +123,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-colors hover:bg-white/5 px-3 -mx-3 rounded-lg group"
+                      className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-all hover:bg-white/5 px-3 -mx-3 rounded-lg group"
                     >
                       <item.icon
                         aria-hidden="true"
@@ -137,7 +145,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-colors hover:bg-white/5 px-3 -mx-3 rounded-lg group"
+                      className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-all hover:bg-white/5 px-3 -mx-3 rounded-lg group"
                       target="_blank"
                     >
                       <item.icon
