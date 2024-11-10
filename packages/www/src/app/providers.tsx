@@ -1,5 +1,6 @@
 "use client";
 
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 
@@ -10,5 +11,9 @@ if (typeof window !== "undefined" && process.env.NODE_ENV !== "development") {
   });
 }
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
+  return (
+    <PostHogProvider client={posthog}>
+      <NuqsAdapter>{children}</NuqsAdapter>
+    </PostHogProvider>
+  );
 }
