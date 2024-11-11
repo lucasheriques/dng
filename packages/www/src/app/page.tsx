@@ -8,8 +8,8 @@ import HeroImage from "../../public/hero.webp";
 
 export default function Home() {
   return (
-    <div className="min-h-dvh bg-slate-950">
-      <div className="relative min-h-screen flex items-center">
+    <>
+      <div className="relative min-h-dvh flex items-center">
         <AnimatedHeroBackground>
           <Image
             src={HeroImage}
@@ -26,6 +26,6 @@ export default function Home() {
       <Features />
       <About />
       <Timeline />
-    </div>
+    </>
   );
 }

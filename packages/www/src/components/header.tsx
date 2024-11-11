@@ -91,7 +91,7 @@ const recentPosts = [
 export default function Header() {
   return (
     <Popover
-      className="isolate z-50 bg-slate-950/75 backdrop-blur-xl shadow-lg min-w-full fixed top-0 left-0 right-0 motion-preset-slide-down border-b border-slate-800/20"
+      className="isolate z-50 bg-slate-950/75 backdrop-blur-md shadow-lg min-w-full fixed top-0 left-0 right-0 motion-preset-slide-down border-b border-slate-800/20"
       as="header"
     >
       <div className="py-5">

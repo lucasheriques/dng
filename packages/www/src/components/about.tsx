@@ -22,9 +22,11 @@ export default function About() {
           className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20"
         />
       </div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <Badge className="text-sm">Sem vídeos curtos por aqui</Badge>
+          <Badge className="text-sm" variant="outline">
+            Não vou desperdiçar seu tempo por aqui
+          </Badge>
           <h1 className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Conteúdo que faz sentido
           </h1>

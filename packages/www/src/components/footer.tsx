@@ -59,7 +59,7 @@ export function Footer() {
       </div>
 
       {/* Footer Content */}
-      <div className="relative z-10 container mx-auto px-6 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-16">
         {/* CTA Section */}
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-[#5CFFE1] text-lg font-semibold">

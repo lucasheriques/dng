@@ -10,7 +10,7 @@ import {
   TableInput,
   TableRow,
 } from "./components";
-import { CalculationResults, FormData } from "./types";
+import { FormData } from "./types";
 import { compress } from "./utils";
 
 interface SalaryCalculatorProps {
@@ -48,7 +48,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
     otherExpenses: "",
   };
 
-  const [results, setResults] = useState<CalculationResults | null>(
+  const [results, setResults] = useState<any>(
     initialData ? calculateResults(initialData) : null
   );
   const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
@@ -90,8 +90,8 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
   };
 
   return (
-    <>
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-slate-950 text-white p-8 py-24">
+      <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
           <div className="flex gap-2">
@@ -211,11 +211,11 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-function calculateResults(formData: FormData): CalculationResults | null {
+function calculateResults(formData: FormData) {
   if (!formData.grossSalary) {
     return null;
   }

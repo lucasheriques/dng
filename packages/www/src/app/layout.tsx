@@ -1,6 +1,7 @@
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/footer";
 import Header from "@/components/header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
@@ -23,9 +24,10 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          {children}
+          <main className="min-h-dvh bg-slate-950">{children}</main>
           <Footer />
         </Providers>
+        <TailwindIndicator />
       </body>
     </html>
   );
