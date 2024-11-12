@@ -59,7 +59,7 @@ const mentorshipItems = [
         <p>
           <strong>Atenção:</strong> A mentoria em grupo é exclusiva para os{" "}
           <a
-            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
             className="underline"
             target="_blank"
           >
@@ -112,7 +112,7 @@ const mentorshipItems = [
           </a>{" "}
           Para uma sessão recorrente, com desconto no valor anual,{" "}
           <a
-            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
             className="underline"
             target="_blank"
           >
@@ -242,7 +242,7 @@ export function MentorshipSection({ newsletterUrl }: MentorshipSectionProps) {
       </Tabs>
 
       <Button className="w-full md:w-auto min-w-64" asChild>
-        <Link href={`${newsletterUrl}/subscribe?ref=devnagringa`}>
+        <Link href={`${newsletterUrl}/subscribe?ref=nagringa.dev`}>
           Faça parte da mentoria
           <Network className="ml-2 h-4 w-4" />
         </Link>

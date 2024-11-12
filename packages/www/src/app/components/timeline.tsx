@@ -49,7 +49,7 @@ const data: TimelineEntry[] = [
         </div>
         <Button className="w-full md:w-auto min-w-64" variant="outline" asChild>
           <Link
-            href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
             className="flex items-center"
           >
             Receba os artigos toda semana

@@ -86,7 +86,7 @@ export function Footer() {
               className="group group-hover:motion-preset-slide-right-lg motion-duration-1000"
             >
               <Link
-                href={`${socials.newsletter}/subscribe?ref=devnagringa`}
+                href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
                 target="_blank"
               >
                 Participar da mentoria
