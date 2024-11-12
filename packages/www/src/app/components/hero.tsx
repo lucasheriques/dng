@@ -90,7 +90,7 @@ export default function Hero() {
         </Button>
         <Button variant="outline" size="xl" asChild className="min-w-80">
           <Link href={`${socials.newsletter}/archive?ref=devnagringa`}>
-            Veja o conteúdo gratuito
+            Veja minha newsletter
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </Button>
@@ -105,17 +105,17 @@ export default function Hero() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl w-full">
           <AnimatedStat
-            value={850}
+            value={1000}
             label="inscritos na newsletter"
             color="text-primary"
           />
           <AnimatedStat
-            value={100}
+            value={150}
             label="membros na comunidade"
             color="text-yellow-400"
           />
           <AnimatedStat
-            value={15}
+            value={20}
             label="assinantes da mentoria"
             color="text-[#FF4B8C]"
           />

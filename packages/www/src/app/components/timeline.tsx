@@ -103,9 +103,11 @@ const data: TimelineEntry[] = [
                   nível de inovação e comprometimento.
                 </p>
                 <p>
-                  Essa mentoria com o Lucas foi um achado viu. O cara é uma
-                  referência técnica gigante e uma fonte de energia para quem
-                  deseja crescer na área.
+                  <strong>
+                    Essa mentoria com o Lucas foi um achado viu. O cara é uma
+                    referência técnica gigante e uma fonte de energia para quem
+                    deseja crescer na área.
+                  </strong>
                 </p>
               </div>
             }
@@ -188,6 +190,79 @@ const data: TimelineEntry[] = [
                       Technical Lead @ MoOngy
                     </p>
                   </div>
+                </div>
+              </Link>
+            }
+          />
+          <ExpandableCard
+            title="Mentoria em grupo"
+            summary="Para quem estava a 10 meses procurando vaga, eu atribuo à ajuda do Lucas o sucesso na reta final, pois foi muito rápido o impacto após a entrada e os ajustes de currículo com os conselhos dele."
+            fullContent={
+              <div className="prose dark:prose-invert">
+                <p>
+                  Eu fiquei aproximadamente 1 ano em busca de uma melhora
+                  salarial. Fui aos poucos me aprimorando, estudando, tentando
+                  várias iterações do meu currículo e explorando diversas
+                  plataformas de emprego na tentativa de mudar de posição e
+                  progredir na carreira.
+                </p>
+                <p>
+                  Um dia, fui atrás de informações no r/brdev para ver questões
+                  de mercado, porque já fazia tanto tempo que eu estava à
+                  procura que eu queria saber se meus interesses que estavam
+                  muito fora do preço de mercado.
+                </p>
+                <p>
+                  Foi lá que eu encontrei um post do Lucas sobre o seu blog Dev
+                  na Gringa. Como estava atrás de informação, fui ler as
+                  notícias, me inscrevi na newsletter, e acabei entrando na
+                  comunidade dele, onde tem outros desenvolvedores também na
+                  mesma procura. Foi a melhor decisão que eu tomei nesse tempo
+                  todo.
+                </p>
+                <p>
+                  Claro que tudo que estudei antes fez muita diferença. Mas
+                  tinha uma coisa que me barrava direto nas vagas: A avaliação
+                  de currículo. Estar junto com outras pessoas com o mesmo
+                  interesse, podendo compartilhar experiências, e, mais
+                  importante de tudo, tendo alguém mais experiente para indicar
+                  quais são os pontos mais críticos de melhora foi extremamente
+                  benéfico.
+                </p>
+                <p>
+                  No mês seguinte a eu me inscrever na newsletter e entrar na
+                  comunidade, eu consegui 6 entrevistas.{" "}
+                  <strong>
+                    Para quem estava a 10 meses procurando vaga, eu atribuo à
+                    ajuda do Lucas o sucesso na reta final, pois foi muito
+                    rápido o impacto após a entrada e os ajustes de currículo
+                    com os conselhos dele.
+                  </strong>{" "}
+                  Com isso, eu consegui avançar em diversos processos e, em 40
+                  dias, atingir uma oferta que estava na minha expectativa
+                  salarial. Ou seja, eu não estava com expectativas surreais,
+                  mas me faltava algo.
+                </p>
+              </div>
+            }
+            footer={
+              <Link
+                href="https://www.linkedin.com/in/lorenzo-santos-correa/"
+                target="_blank"
+                className="flex items-center space-x-4"
+              >
+                <Avatar>
+                  <AvatarImage
+                    src="/reviews/lorenzo.jpeg"
+                    alt="Lorenzo Corrêa"
+                  />
+                  <AvatarFallback>LC</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-white">Lorenzo Corrêa</p>
+                  <p className="text-sm text-white/60">
+                    Software Developer @ MOST Specialist Technologies
+                  </p>
                 </div>
               </Link>
             }
