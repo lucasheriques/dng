@@ -1,3 +1,4 @@
+import { HighlightedText } from "@/components/highlighted-text";
 import { ChartNoAxesCombined, Network, Newspaper } from "lucide-react";
 import Image from "next/image";
 import CommunityImage from "../../../public/community.webp";
@@ -32,15 +33,13 @@ export default function Features() {
             <div className="lg:row-start-2 lg:max-w-md">
               <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 Uma{" "}
-                <span className="bg-pink-500/40 px-1 rounded">comunidade</span>{" "}
-                que te ajuda a conquistar{" "}
-                <span className="bg-gradient-to-r from-primary/30 to-accent-secondary/30 rounded">
-                  oportunidades globais
-                </span>{" "}
-                e{" "}
-                <span className="bg-primary/40 px-1 rounded">
+                <HighlightedText bgColor="bg-pink-500/40">
+                  comunidade
+                </HighlightedText>{" "}
+                que te ajuda a conquistar oportunidades globais e{" "}
+                <HighlightedText bgColor="bg-primary/40">
                   crescer profissionalmente
-                </span>
+                </HighlightedText>
               </h2>
               <p className="mt-6 text-lg/8 text-gray-300">
                 Faça parte de uma comunidade vibrante de devs brasileiros. Tenha

@@ -196,7 +196,12 @@ const data: TimelineEntry[] = [
           />
           <ExpandableCard
             title="Mentoria em grupo"
-            summary="Para quem estava a 10 meses procurando vaga, eu atribuo à ajuda do Lucas o sucesso na reta final, pois foi muito rápido o impacto após a entrada e os ajustes de currículo com os conselhos dele."
+            summary="[...] encontrei um post do Lucas sobre o seu blog Dev
+                  na Gringa. Como estava atrás de informação, fui ler as
+                  notícias, me inscrevi na newsletter, e acabei entrando na
+                  comunidade dele, onde tem outros desenvolvedores também na
+                  mesma procura. Foi a melhor decisão que eu tomei nesse tempo
+                  todo."
             fullContent={
               <div className="prose dark:prose-invert">
                 <p>
@@ -284,7 +289,7 @@ const TimelineCircle = ({
 }) => {
   const circleTransform = useTransform(
     scrollYProgress,
-    [index / total, (index + 0.6) / total],
+    [index / total, (index + 0.1) / total],
     ["rgb(229 229 229)", "#ff4d8e"]
   );
 

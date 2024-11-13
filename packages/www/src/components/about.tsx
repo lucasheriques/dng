@@ -1,3 +1,4 @@
+import { HighlightedText } from "@/components/highlighted-text";
 import { Badge } from "@/components/ui/badge";
 import { ConciergeBell, ListCheck, SearchIcon } from "lucide-react";
 
@@ -85,9 +86,9 @@ export default function About() {
                   className="mt-1 h-5 w-5 flex-none text-primary motion-preset-pulse motion-duration-[3s]"
                 />
                 <span>
-                  <strong className="font-semibold text-white bg-primary/40 px-1 rounded">
+                  <HighlightedText className="font-semibold text-white ">
                     Pesquisável
-                  </strong>{" "}
+                  </HighlightedText>{" "}
                   Meu conteúdo é composto primariamente de artigos e imagens. O
                   motivo é que eu quero que ele seja acessível: você pode
                   resumir ele usando o ChatGPT, encontrar ele usando o Google, e
@@ -100,9 +101,12 @@ export default function About() {
                   className="mt-1 h-5 w-5 flex-none text-primary motion-preset-stretch motion-duration-[1s]"
                 />
                 <span>
-                  <strong className="font-semibold text-white bg-lime-400/60 px-1 rounded">
+                  <HighlightedText
+                    className="font-semibold text-white px-1 rounded"
+                    bgColor="bg-lime-400/60"
+                  >
                     Conciso
-                  </strong>{" "}
+                  </HighlightedText>{" "}
                   Meu conteúdo é conciso e direto ao ponto. Gasto 5-10h por
                   artigo entre pesquisa, escrita e revisão. E publico apenas o
                   que é mais importante para que você se torne um(a) melhor
@@ -115,9 +119,12 @@ export default function About() {
                   className="mt-1 h-5 w-5 flex-none text-primary motion-preset-seesaw"
                 />
                 <span>
-                  <strong className="font-semibold text-white bg-rose-600/60 px-1 rounded">
+                  <HighlightedText
+                    className="font-semibold text-white px-1 rounded"
+                    bgColor="bg-rose-600/60"
+                  >
                     Feito sob medida
-                  </strong>{" "}
+                  </HighlightedText>{" "}
                   Eu trabalho em tempo integral como engenheiro de software. E
                   só vou publicar conteúdos que eu tenha experiência prática, ou
                   que eu considere que vai ser útil para você (e pra mim
