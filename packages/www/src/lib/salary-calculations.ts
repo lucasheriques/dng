@@ -75,7 +75,7 @@ export function calculateCLT(input: SalaryInput) {
 
   // Simplified 13th and vacation calculations based on net salary
   const netThirteenth = netBaseSalary / 12;
-  const netVacation = (netBaseSalary * 0.33333) / 12; // Includes the 1/3 bonus
+  const netVacation = (netBaseSalary * 0.33) / 12; // Includes the 1/3 bonus
 
   const benefits =
     (input.mealAllowance || 0) +

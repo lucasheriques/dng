@@ -140,26 +140,30 @@ export function ResultsAccordion({
                 value={formatCurrency(results.clt.deductions.ir)}
                 type="deduction"
               />
-              <DetailRow
-                label="Vale-Transporte"
-                value={formatCurrency(
-                  results.clt.detailedBenefits.transportAllowance
-                )}
-                type="addition"
-              />
-              <DetailRow
-                label="Desconto VT (6%)"
-                value={formatCurrency(
-                  results.clt.detailedBenefits.transportDeduction
-                )}
-                type="deduction"
-              />
+              {results.clt.detailedBenefits.transportDeduction > 0 && (
+                <DetailRow
+                  label="Desconto VT (6%)"
+                  value={formatCurrency(
+                    results.clt.detailedBenefits.transportDeduction
+                  )}
+                  type="deduction"
+                />
+              )}
               <DetailRow
                 label="Salário Líquido Base"
                 value={formatCurrency(results.clt.netSalary)}
                 type="neutral"
               />
               <TableHeader>Benefícios CLT</TableHeader>
+              {results.clt.detailedBenefits.transportAllowance > 0 && (
+                <DetailRow
+                  label="Vale-Transporte"
+                  value={formatCurrency(
+                    results.clt.detailedBenefits.transportAllowance
+                  )}
+                  type="addition"
+                />
+              )}
               {results.clt.detailedBenefits.mealAllowance > 0 && (
                 <DetailRow
                   label="Vale Refeição/Alimentação"
@@ -202,14 +206,7 @@ export function ResultsAccordion({
               <DetailRow
                 label="Férias (proporcional)"
                 value={formatCurrency(
-                  results.clt.detailedBenefits.vacationBonus * 0.75
-                )}
-                type="addition"
-              />
-              <DetailRow
-                label="Adicional de Férias (1/3)"
-                value={formatCurrency(
-                  results.clt.detailedBenefits.vacationBonus * 0.25
+                  results.clt.detailedBenefits.vacationBonus
                 )}
                 type="addition"
               />
@@ -231,7 +228,7 @@ export function ResultsAccordion({
       <Accordion
         type="single"
         value={isExpanded ? "details" : ""}
-        onValueChange={() => onToggle()}
+        onClick={onToggle}
         className="w-full"
       >
         <AccordionItem value="details" className="border-0">

@@ -54,7 +54,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
   const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
   const [shareButtonText, setShareButtonText] = useState("Compartilhar");
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: keyof FormData, value: string) => {
     const newFormData = {
       ...formData,
       [field]: value,
@@ -170,7 +170,11 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.pjGrossSalary}
                 onChange={(v) => handleInputChange("pjGrossSalary", v)}
-                placeholder="Se diferente do CLT"
+                placeholder={
+                  formData.grossSalary === ""
+                    ? "Se diferente do CLT"
+                    : formData.grossSalary
+                }
               />
             </TableRow>
 
