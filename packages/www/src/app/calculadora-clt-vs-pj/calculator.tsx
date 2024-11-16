@@ -4,7 +4,9 @@ import { ComparisonCard } from "@/app/calculadora-clt-vs-pj/components/compariso
 import { Button } from "@/components/ui/button";
 import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
 import { Share2 } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useState } from "react";
+import { useLocalStorage } from "usehooks-ts";
 import {
   ResultsAccordion,
   TableHeader,
@@ -14,9 +16,21 @@ import {
 import { CalculationResults, FormData } from "./types";
 import { compress } from "./utils";
 
+const RecentComparisons = dynamic(
+  () =>
+    import("./components/recent-comparisons").then(
+      (mod) => mod.RecentComparisons
+    ),
+  { ssr: false }
+);
+
 interface SalaryCalculatorProps {
   initialData?: FormData;
   defaultInterestRate: number;
+}
+
+interface CalculatorHistory {
+  hashes: string[];
 }
 
 export function SalaryCalculatorClient({
@@ -58,6 +72,12 @@ export function SalaryCalculatorClient({
   );
   const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
   const [shareButtonText, setShareButtonText] = useState("Compartilhar");
+  const [history, setHistory] = useLocalStorage<CalculatorHistory>(
+    "calculator-history",
+    {
+      hashes: [],
+    }
+  );
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     const newFormData = {
@@ -71,6 +91,12 @@ export function SalaryCalculatorClient({
 
   const handleShare = async () => {
     const hash = compress(formData);
+
+    const newHashes = [hash, ...history.hashes.filter((h) => h !== hash)].slice(
+      0,
+      3
+    );
+    setHistory({ hashes: newHashes });
 
     const url = new URL(window.location.href);
     url.searchParams.set("d", hash);
@@ -94,14 +120,21 @@ export function SalaryCalculatorClient({
     window.history.replaceState({}, "", url.toString());
   };
 
+  const handleLoadHistory = (data: FormData) => {
+    setFormData(data);
+    setResults(calculateResults(data));
+  };
+
   return (
     <>
       <div className="max-w-7xl mx-auto grid gap-4">
         <div className="flex md:items-center justify-between md:flex-row flex-col gap-2 md:gap-4">
-          <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
+          </div>
           <div className="flex gap-2">
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
               className="gap-2"
               onClick={handleClear}
@@ -119,6 +152,11 @@ export function SalaryCalculatorClient({
             </Button>
           </div>
         </div>
+
+        <RecentComparisons
+          hashes={history.hashes}
+          onLoadHistory={handleLoadHistory}
+        />
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="border border-slate-700 rounded-lg overflow-hidden bg-slate-900/50">
@@ -255,7 +293,9 @@ export function SalaryCalculatorClient({
   );
 }
 
-function calculateResults(formData: FormData): CalculationResults | null {
+export function calculateResults(
+  formData: FormData
+): CalculationResults | null {
   if (!formData.grossSalary) {
     return null;
   }
