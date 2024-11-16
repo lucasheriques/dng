@@ -4,7 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import FooterHeroImage from "../../public/footer.webp";
 const tools = [
-  { name: "[Em breve] Calculadora de Salário Líquido CLT vs PJ", href: "#" },
+  {
+    name: "Calculadora de Salário Líquido CLT vs PJ",
+    href: "/calculadora-clt-vs-pj",
+  },
   { name: "Newsletter", href: socials.newsletter },
 ];
 
