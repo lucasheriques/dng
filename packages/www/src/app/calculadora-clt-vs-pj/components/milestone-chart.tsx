@@ -88,7 +88,7 @@ export function MilestoneChart({
         <h3 className="text-lg font-semibold mb-4">
           Projeção de Investimentos
         </h3>
-        <div className="aspect-[4/3] md:aspect-[21/9] max-h-[600px]">
+        <div className="">
           <ChartContainer config={chartConfig} className="h-full w-full">
             <AreaChart
               data={data}
