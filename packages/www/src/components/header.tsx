@@ -15,6 +15,7 @@ import {
   UserPlus,
   Youtube,
 } from "lucide-react";
+import { Link as NextViewTransitionsLink } from "next-view-transitions";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -125,7 +126,7 @@ export default function Header() {
                   <div className="mt-6 flow-root">
                     <div className="-my-2">
                       {comunidade.map((item) => (
-                        <Link
+                        <NextViewTransitionsLink
                           key={item.name}
                           href={item.href}
                           className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-all hover:bg-white/5 px-3 -mx-3 rounded-lg group"
@@ -136,7 +137,7 @@ export default function Header() {
                             className="h-6 w-6 flex-none text-gray-500 group-hover:text-gray-300 transition-colors"
                           />
                           {item.name}
-                        </Link>
+                        </NextViewTransitionsLink>
                       ))}
                     </div>
                   </div>
