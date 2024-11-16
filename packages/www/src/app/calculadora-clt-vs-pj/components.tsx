@@ -5,6 +5,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 import { CalculationResults } from "./types";
 
 const formatCurrency = (value: number) => {
@@ -22,17 +29,31 @@ export function TableRow({
   label,
   children,
   className = "",
+  tooltipContent,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
+  tooltipContent?: string;
 }) {
   return (
     <div
       className={`grid grid-cols-2 items-stretch border-b border-slate-700 ${className}`}
     >
-      <div className="px-3 py-2 bg-slate-800/50 border-r border-slate-700 text-sm text-slate-300">
+      <div className="px-3 py-2 bg-slate-800/50 border-r border-slate-700 text-sm text-slate-300 flex justify-between items-center">
         {label}
+        {tooltipContent && (
+          <TooltipProvider delayDuration={100}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Info size={16} />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltipContent}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
       </div>
       <div>{children}</div>
     </div>
@@ -66,10 +87,12 @@ export function DetailRow({
   label,
   value,
   type = "neutral",
+  tooltipContent,
 }: {
   label: string;
   value: string;
   type?: "addition" | "deduction" | "neutral";
+  tooltipContent?: string;
 }) {
   const valueClassName =
     type === "addition"
@@ -79,7 +102,7 @@ export function DetailRow({
         : "";
 
   return (
-    <TableRow label={label}>
+    <TableRow label={label} tooltipContent={tooltipContent}>
       <div className={`px-3 py-2 text-right ${valueClassName}`}>
         {type === "addition" ? "+" : type === "deduction" ? "-" : ""}
         {value}

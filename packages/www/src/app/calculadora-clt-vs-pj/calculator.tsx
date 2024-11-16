@@ -146,7 +146,10 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
                 onChange={(v) => handleInputChange("healthInsurance", v)}
               />
             </TableRow>
-            <TableRow label="Outros Benefícios">
+            <TableRow
+              label="Outros Benefícios"
+              tooltipContent="Qualquer benefício não-taxável que você queira adicionar."
+            >
               <TableInput
                 value={formData.otherBenefits}
                 onChange={(v) => handleInputChange("otherBenefits", v)}
@@ -179,19 +182,30 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
             </TableRow>
 
             <TableHeader>Despesas</TableHeader>
-            <TableRow label="Honorários Contador">
+            <TableRow
+              label="Honorários Contador"
+              tooltipContent="Baseado no valor da mensalidade da Contabilizei."
+            >
               <TableInput
                 value={formData.accountingFee}
                 onChange={(v) => handleInputChange("accountingFee", v)}
               />
             </TableRow>
-            <TableRow label="Contribuição INSS">
+            <TableRow
+              label="Contribuição INSS"
+              tooltipContent="O valor padrão é 11% do salário mínimo."
+            >
               <TableInput
                 value={formData.inssContribution}
                 onChange={(v) => handleInputChange("inssContribution", v)}
               />
             </TableRow>
-            <TableRow label="Alíquota de Impostos (%)">
+            <TableRow
+              label="Alíquota de Impostos (%)"
+              tooltipContent={
+                "PJ tem muitos cenários que não são cobertos aqui. Simplifique de forma que você mesmo pode colocar o que achar certo."
+              }
+            >
               <TableInput
                 value={formData.taxRate}
                 onChange={(v) => handleInputChange("taxRate", v)}
