@@ -1,5 +1,6 @@
 "use client";
 
+import { ComparisonCard } from "@/app/calculadora-clt-vs-pj/components/comparison-card";
 import { Button } from "@/components/ui/button";
 import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
 import { Share2 } from "lucide-react";
@@ -15,9 +16,13 @@ import { compress } from "./utils";
 
 interface SalaryCalculatorProps {
   initialData?: FormData;
+  defaultInterestRate: number;
 }
 
-export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
+export function SalaryCalculatorClient({
+  initialData,
+  defaultInterestRate,
+}: SalaryCalculatorProps) {
   const [formData, setFormData] = useState<FormData>(
     initialData ?? {
       grossSalary: "",
@@ -91,7 +96,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto grid gap-8">
+      <div className="max-w-7xl mx-auto grid gap-4">
         <div className="flex md:items-center justify-between md:flex-row flex-col gap-2 md:gap-4">
           <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
           <div className="flex gap-2">
@@ -238,6 +243,13 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
             )}
           </div>
         </div>
+
+        {results && (
+          <ComparisonCard
+            defaultInterestRate={defaultInterestRate}
+            results={results}
+          />
+        )}
       </div>
     </>
   );

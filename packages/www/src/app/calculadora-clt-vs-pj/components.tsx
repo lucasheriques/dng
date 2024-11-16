@@ -10,15 +10,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { formatCurrency } from "@/lib/utils";
 import { Info } from "lucide-react";
 import { CalculationResults } from "./types";
-
-const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(value);
-};
 
 export function TableHeader({ children }: { children: React.ReactNode }) {
   return <div className="bg-slate-800 px-3 py-2 font-semibold">{children}</div>;
@@ -322,5 +316,3 @@ export function ResultsAccordion({
     </div>
   );
 }
-
-export { formatCurrency };

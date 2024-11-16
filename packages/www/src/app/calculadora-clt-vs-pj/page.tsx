@@ -1,9 +1,23 @@
+import { FormData } from "@/app/calculadora-clt-vs-pj/types";
 import { decompress } from "@/app/calculadora-clt-vs-pj/utils";
 import { SalaryCalculatorClient } from "./calculator";
-import { FormData } from "./types";
 
 // type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+async function getSelicRate() {
+  try {
+    const response = await fetch(
+      "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1",
+      { next: { revalidate: 3600 } } // Revalidate every hour
+    );
+    const data = await response.json();
+    return Number(data[0].valor);
+  } catch (error) {
+    console.error("Error fetching SELIC rate:", error);
+    return 11.25; // Fallback value
+  }
+}
 
 export default async function SalaryCalculator({
   searchParams,
@@ -22,9 +36,14 @@ export default async function SalaryCalculator({
     }
   }
 
+  const selicRate = await getSelicRate();
+
   return (
     <div className="py-24 px-4 max-w-7xl mx-auto">
-      <SalaryCalculatorClient initialData={initialData} />
+      <SalaryCalculatorClient
+        initialData={initialData}
+        defaultInterestRate={selicRate}
+      />
     </div>
   );
 }
