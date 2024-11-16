@@ -91,8 +91,8 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
+      <div className="max-w-7xl mx-auto grid gap-8">
+        <div className="flex md:items-center justify-between md:flex-row flex-col gap-2 md:gap-4">
           <h1 className="text-4xl font-bold">Calculadora CLT vs. PJ</h1>
           <div className="flex gap-2">
             <Button
@@ -124,6 +124,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
                 value={formData.grossSalary}
                 onChange={(v) => handleInputChange("grossSalary", v)}
                 required
+                prefix="R$"
               />
             </TableRow>
 
@@ -132,18 +133,21 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.mealAllowance}
                 onChange={(v) => handleInputChange("mealAllowance", v)}
+                prefix="R$"
               />
             </TableRow>
             <TableRow label="Vale-Transporte">
               <TableInput
                 value={formData.transportAllowance}
                 onChange={(v) => handleInputChange("transportAllowance", v)}
+                prefix="R$"
               />
             </TableRow>
             <TableRow label="Plano de Saúde">
               <TableInput
                 value={formData.healthInsurance}
                 onChange={(v) => handleInputChange("healthInsurance", v)}
+                prefix="R$"
               />
             </TableRow>
             <TableRow
@@ -153,6 +157,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.otherBenefits}
                 onChange={(v) => handleInputChange("otherBenefits", v)}
+                prefix="R$"
               />
             </TableRow>
 
@@ -178,6 +183,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
                     ? "Se diferente do CLT"
                     : formData.grossSalary
                 }
+                prefix="R$"
               />
             </TableRow>
 
@@ -189,6 +195,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.accountingFee}
                 onChange={(v) => handleInputChange("accountingFee", v)}
+                prefix="R$"
               />
             </TableRow>
             <TableRow
@@ -198,6 +205,7 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.inssContribution}
                 onChange={(v) => handleInputChange("inssContribution", v)}
+                prefix="R$"
               />
             </TableRow>
             <TableRow
@@ -209,12 +217,14 @@ export function SalaryCalculatorClient({ initialData }: SalaryCalculatorProps) {
               <TableInput
                 value={formData.taxRate}
                 onChange={(v) => handleInputChange("taxRate", v)}
+                prefix="%"
               />
             </TableRow>
             <TableRow label="Outras Despesas">
               <TableInput
                 value={formData.otherExpenses}
                 onChange={(v) => handleInputChange("otherExpenses", v)}
+                prefix="R$"
               />
             </TableRow>
 

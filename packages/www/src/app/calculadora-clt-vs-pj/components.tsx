@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
@@ -60,26 +59,49 @@ export function TableRow({
   );
 }
 
-export function TableInput({
-  value,
-  onChange,
-  required = false,
-  placeholder,
-}: {
+interface TableInputProps {
   value: string;
   onChange: (value: string) => void;
   required?: boolean;
   placeholder?: string;
-}) {
+  prefix?: string;
+  suffix?: string;
+}
+
+export function TableInput({
+  value,
+  onChange,
+  required,
+  placeholder,
+  prefix,
+  suffix,
+}: TableInputProps) {
   return (
-    <Input
-      type="number"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      required={required}
-      placeholder={placeholder}
-      className="h-full border-0 rounded-none bg-transparent text-right focus:ring-1 focus:ring-slate-400"
-    />
+    <div className="relative flex items-center w-full">
+      {prefix && (
+        <span className="absolute left-2 text-slate-400 pointer-events-none">
+          {prefix}
+        </span>
+      )}
+      <input
+        type="number"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`w-full bg-transparent p-2 focus:outline-none focus:ring-2 focus:ring-slate-600 rounded
+          ${prefix ? "pl-8" : "pl-2"}
+          ${suffix ? "pr-8" : "pr-2"}
+          [appearance:textfield]
+          [&::-webkit-outer-spin-button]:appearance-none
+          [&::-webkit-inner-spin-button]:appearance-none`}
+        placeholder={placeholder}
+        required={required}
+      />
+      {suffix && (
+        <span className="absolute right-2 text-slate-400 pointer-events-none">
+          {suffix}
+        </span>
+      )}
+    </div>
   );
 }
 
