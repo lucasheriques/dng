@@ -2,6 +2,7 @@
 
 import { ComparisonCard } from "@/app/calculadora-clt-vs-pj/components/comparison-card";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
 import { Share2 } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -33,44 +34,32 @@ interface CalculatorHistory {
   hashes: string[];
 }
 
+const defaultFormData: FormData = {
+  grossSalary: "",
+  pjGrossSalary: "",
+  mealAllowance: "",
+  transportAllowance: "",
+  healthInsurance: "",
+  otherBenefits: "",
+  includeFGTS: false,
+  accountingFee: "189",
+  inssContribution: String(1412 * 0.11),
+  taxRate: "10",
+  otherExpenses: "",
+};
+
 export function SalaryCalculatorClient({
   initialData,
   defaultInterestRate,
 }: SalaryCalculatorProps) {
   const [formData, setFormData] = useState<FormData>(
-    initialData ?? {
-      grossSalary: "",
-      pjGrossSalary: "",
-      mealAllowance: "",
-      transportAllowance: "",
-      healthInsurance: "",
-      otherBenefits: "",
-      includeFGTS: true,
-      accountingFee: "189",
-      inssContribution: String(1412 * 0.11),
-      taxRate: "10",
-      otherExpenses: "",
-    }
+    initialData ?? defaultFormData
   );
-
-  const defaultFormData: FormData = {
-    grossSalary: "",
-    pjGrossSalary: "",
-    mealAllowance: "",
-    transportAllowance: "",
-    healthInsurance: "",
-    otherBenefits: "",
-    includeFGTS: true,
-    accountingFee: "189",
-    inssContribution: String(1412 * 0.11),
-    taxRate: "10",
-    otherExpenses: "",
-  };
 
   const [results, setResults] = useState<CalculationResults | null>(
     initialData ? calculateResults(initialData) : null
   );
-  const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
+  const [isDetailsExpanded, setIsDetailsExpanded] = useState(true);
   const [shareButtonText, setShareButtonText] = useState("Compartilhar");
   const [history, setHistory] = useLocalStorage<CalculatorHistory>(
     "calculator-history",
@@ -78,6 +67,15 @@ export function SalaryCalculatorClient({
       hashes: [],
     }
   );
+
+  const handleFGTSChange = (value: boolean) => {
+    const newFormData = {
+      ...formData,
+      includeFGTS: value,
+    };
+    setFormData(newFormData);
+    setResults(calculateResults(newFormData));
+  };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     const newFormData = {
@@ -160,7 +158,27 @@ export function SalaryCalculatorClient({
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="border border-slate-700 rounded-lg overflow-hidden bg-slate-900/50">
-            <TableHeader>CLT</TableHeader>
+            <TableHeader>
+              <div className="flex justify-between items-center">
+                <span>CLT</span>
+                <div className="">
+                  <div className="flex items-center gap-2">
+                    <label
+                      htmlFor="fgts-checkbox"
+                      className="text-sm text-slate-300"
+                    >
+                      Incluir FGTS
+                    </label>
+                    <Checkbox
+                      id="fgts-checkbox"
+                      className="p-0"
+                      checked={formData.includeFGTS}
+                      onCheckedChange={handleFGTSChange}
+                    />
+                  </div>
+                </div>
+              </div>
+            </TableHeader>
             <TableHeader>Salário Base</TableHeader>
             <TableRow label="Salário Bruto Mensal">
               <TableInput

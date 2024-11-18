@@ -142,7 +142,10 @@ export function ResultsAccordion({
     return (
       <div>
         <TableHeader>Resultados</TableHeader>
-        <TableRow label="Total Líquido" className="font-semibold">
+        <TableRow
+          label="Total Líquido + Benefícios Acumulados"
+          className="font-semibold"
+        >
           <div className="px-3 py-2 text-right">
             {formatCurrency(results.clt.total)}
           </div>
@@ -156,7 +159,9 @@ export function ResultsAccordion({
           <AccordionItem value="details" className="border-0">
             <div className="bg-slate-800/50">
               <AccordionTrigger className="hover:no-underline px-3 py-2 text-sm">
-                Ver cálculo detalhado
+                {isExpanded
+                  ? "Ocultar cálculo detalhado"
+                  : "Ver cálculo detalhado"}
               </AccordionTrigger>
             </div>
             <AccordionContent className="pb-0">
@@ -230,11 +235,13 @@ export function ResultsAccordion({
                   type="addition"
                 />
               )}
-              <DetailRow
-                label="FGTS Mensal"
-                value={formatCurrency(results.clt.detailedBenefits.fgts)}
-                type="addition"
-              />
+              {results.clt.detailedBenefits.fgts > 0 && (
+                <DetailRow
+                  label="FGTS Mensal"
+                  value={formatCurrency(results.clt.detailedBenefits.fgts)}
+                  type="addition"
+                />
+              )}
               <DetailRow
                 label="13º Salário (proporcional)"
                 value={formatCurrency(
@@ -273,7 +280,9 @@ export function ResultsAccordion({
         <AccordionItem value="details" className="border-0">
           <div className="bg-slate-800/50">
             <AccordionTrigger className="hover:no-underline px-3 py-2 text-sm">
-              Ver cálculo detalhado
+              {isExpanded
+                ? "Ocultar cálculo detalhado"
+                : "Ver cálculo detalhado"}
             </AccordionTrigger>
           </div>
           <AccordionContent className="pb-0">

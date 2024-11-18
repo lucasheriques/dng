@@ -21,7 +21,7 @@ export default function RootLayout({
       <html lang="pt-BR">
         <body
           className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased dark
-        selection:bg-teal-500 selection:text-slate-950`}
+        selection:bg-teal-500 selection:text-slate-950 bg-slate-950`}
         >
           <Providers>
             <Header />
