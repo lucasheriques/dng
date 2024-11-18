@@ -19,6 +19,12 @@ async function getSelicRate() {
   }
 }
 
+export const metadata = {
+  title: "Calculadora de Salário CLT e PJ | Dev na Gringa",
+  description:
+    "Calcule o salário líquido de um profissional CLT e PJ para entender qual a melhor opção. Incluindo todos os benefícios.",
+};
+
 export default async function SalaryCalculator({
   searchParams,
 }: {
