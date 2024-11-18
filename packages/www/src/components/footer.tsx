@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { POPULAR_ARTICLES, socials } from "@/lib/constants";
-import { Link } from "next-view-transitions";
 import Image from "next/image";
+import Link from "next/link";
 import FooterHeroImage from "../../public/footer.webp";
 const tools = [
   {
