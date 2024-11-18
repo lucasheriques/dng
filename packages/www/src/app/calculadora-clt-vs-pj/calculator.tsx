@@ -241,8 +241,8 @@ export function SalaryCalculatorClient({
                 onChange={(v) => handleInputChange("pjGrossSalary", v)}
                 placeholder={
                   formData.grossSalary === ""
-                    ? "Se diferente do CLT"
-                    : formData.grossSalary
+                    ? ""
+                    : `${formData.grossSalary}. Clique para alterar.`
                 }
                 prefix="R$"
               />
