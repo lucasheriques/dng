@@ -41,7 +41,7 @@ const defaultFormData: FormData = {
   transportAllowance: "",
   healthInsurance: "",
   otherBenefits: "",
-  includeFGTS: false,
+  includeFGTS: true,
   accountingFee: "189",
   inssContribution: String(1412 * 0.11),
   taxRate: "10",

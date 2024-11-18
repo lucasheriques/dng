@@ -171,7 +171,7 @@ export function MilestoneChart({
         </div>
         <p className="text-sm text-muted-foreground mt-4">
           Projeção baseada em {investmentRate}% do salário investido a{" "}
-          {interestRate}% ao ano
+          {interestRate * 100}% ao ano
         </p>
       </div>
 

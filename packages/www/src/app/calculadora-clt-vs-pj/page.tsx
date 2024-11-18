@@ -9,7 +9,7 @@ async function getSelicRate() {
   try {
     const response = await fetch(
       "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1",
-      { next: { revalidate: 3600 } } // Revalidate every hour
+      { next: { revalidate: 86400 } } // Revalidate every 24 hours (24 * 60 * 60 seconds)
     );
     const data = await response.json();
     return Number(data[0].valor);
