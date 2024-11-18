@@ -131,6 +131,7 @@ export default function Header() {
                           href={item.href}
                           className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-all hover:bg-white/5 px-3 -mx-3 rounded-lg group"
                           onClick={close}
+                          prefetch={true}
                         >
                           <item.icon
                             aria-hidden="true"

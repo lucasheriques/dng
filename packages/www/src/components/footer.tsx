@@ -138,6 +138,7 @@ export function Footer() {
                   <Link
                     href={tool.href}
                     className="text-gray-300 hover:text-[#5CFFE1] transition-colors"
+                    prefetch={true}
                   >
                     {tool.name}
                   </Link>
