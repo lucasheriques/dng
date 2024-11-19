@@ -1,6 +1,6 @@
 "use client";
 
-import { ComparisonCard } from "@/app/calculadora-clt-vs-pj/components/comparison-card";
+import Results from "@/app/calculadora-clt-vs-pj/components/results";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
@@ -306,9 +306,10 @@ export function SalaryCalculatorClient({
         </div>
 
         {results && (
-          <ComparisonCard
+          <Results
             defaultInterestRate={defaultInterestRate}
             results={results}
+            formData={formData}
           />
         )}
       </div>

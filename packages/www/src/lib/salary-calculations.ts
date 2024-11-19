@@ -1,3 +1,5 @@
+import { FormData } from "@/app/calculadora-clt-vs-pj/types";
+
 interface SalaryInput {
   grossSalary: number;
   mealAllowance?: number;
@@ -134,4 +136,59 @@ export function calculatePJ(input: PJInput) {
     },
     total: netSalary,
   };
+}
+
+export function findCLTEquivalentForPJ(
+  targetNet: number,
+  formData: FormData
+): number {
+  let grossSalary = targetNet * 0.8; // Initial guess
+  let lastGross = 0;
+  const ERROR_MARGIN = 0.0001; // 0.01%
+
+  // Iterate until we find a very close match
+  for (let i = 0; i < 10; i++) {
+    const result = calculateCLT({
+      grossSalary,
+      includeFGTS: formData.includeFGTS,
+      mealAllowance: Number(formData.mealAllowance) || undefined,
+      transportAllowance: Number(formData.transportAllowance) || undefined,
+      healthInsurance: Number(formData.healthInsurance) || undefined,
+      otherBenefits: Number(formData.otherBenefits) || undefined,
+    });
+
+    if (Math.abs(result.total - targetNet) < targetNet * ERROR_MARGIN) {
+      return grossSalary;
+    }
+
+    const adjustment = (targetNet - result.total) * 0.8;
+    lastGross = grossSalary;
+    grossSalary += adjustment;
+
+    if (Math.abs(lastGross - grossSalary) < 0.01) {
+      break;
+    }
+  }
+
+  return grossSalary;
+}
+
+export function findPJEquivalentForCLT(
+  targetNet: number,
+  formData: FormData
+): number {
+  // For PJ: netSalary = grossSalary * (1 - taxRate) - fixedCosts
+  const taxRate = Number(formData.taxRate) / 100;
+  const accountingFee = Number(formData.accountingFee);
+  const inssContribution = Number(formData.inssContribution);
+  const otherExpenses = Number(formData.otherExpenses) || 0;
+  const fixedCosts = accountingFee + inssContribution + otherExpenses;
+
+  console.log({
+    targetNet,
+    fixedCosts,
+    taxRate,
+  });
+
+  return (targetNet + fixedCosts) / (1 - taxRate);
 }
