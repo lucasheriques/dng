@@ -1,4 +1,10 @@
 import { MilestoneChart } from "@/app/calculadora-clt-vs-pj/components/milestone-chart";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { formatCurrency } from "@/lib/utils";
 import { useState } from "react";
 import { CalculationResults } from "../types";
@@ -44,22 +50,46 @@ export function ComparisonCard({
           </p>
         </div>
 
-        <InvestmentConfig
-          cltMonthlyTotal={results.clt.total}
-          pjMonthlyTotal={results.pj.total}
-          investmentRate={investmentRate}
-          interestRate={interestRate}
-          onInvestmentRateChange={setInvestmentRate}
-          onInterestRateChange={setInterestRate}
-        />
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue="investment-projection"
+        >
+          <AccordionItem value="investment-projection">
+            <AccordionTrigger className="bg-slate-800/50 p-4">
+              Simular Projeção de Investimento
+            </AccordionTrigger>
+            <AccordionContent className="pb-0 bg-slate-800/50 p-4">
+              <div className="space-y-4">
+                {results.pj.total > 0 && results.clt.total > 0 ? (
+                  <>
+                    <InvestmentConfig
+                      cltMonthlyTotal={results.clt.total}
+                      pjMonthlyTotal={results.pj.total}
+                      investmentRate={investmentRate}
+                      interestRate={interestRate}
+                      onInvestmentRateChange={setInvestmentRate}
+                      onInterestRateChange={setInterestRate}
+                    />
 
-        <MilestoneChart
-          cltMonthlyTotal={results.clt.total}
-          pjMonthlyTotal={results.pj.total}
-          investmentRate={Number(investmentRate)}
-          interestRate={Number(interestRate) / 100}
-          milestones={MILESTONES}
-        />
+                    <MilestoneChart
+                      cltMonthlyTotal={results.clt.total}
+                      pjMonthlyTotal={results.pj.total}
+                      investmentRate={Number(investmentRate)}
+                      interestRate={Number(interestRate) / 100}
+                      milestones={MILESTONES}
+                    />
+                  </>
+                ) : (
+                  <p className="text-sm text-slate-400">
+                    Você só consegue investir se o teu salário for maior que 0.
+                    😅
+                  </p>
+                )}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );

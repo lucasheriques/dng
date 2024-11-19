@@ -85,10 +85,7 @@ export function MilestoneChart({
   return (
     <div className="space-y-8">
       <div className="w-full">
-        <h3 className="text-lg font-semibold mb-4">
-          Projeção de Investimentos
-        </h3>
-        <div className="">
+        <div>
           <ChartContainer config={chartConfig} className="h-full w-full">
             <AreaChart
               data={data}

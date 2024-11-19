@@ -186,6 +186,11 @@ export function SalaryCalculatorClient({
                 onChange={(v) => handleInputChange("grossSalary", v)}
                 required
                 prefix="R$"
+                placeholder={
+                  formData.pjGrossSalary === ""
+                    ? ""
+                    : `${formData.pjGrossSalary}. Clique para alterar.`
+                }
               />
             </TableRow>
 
@@ -314,12 +319,12 @@ export function SalaryCalculatorClient({
 export function calculateResults(
   formData: FormData
 ): CalculationResults | null {
-  if (!formData.grossSalary) {
+  if (!formData.grossSalary && !formData.pjGrossSalary) {
     return null;
   }
 
   const cltInput = {
-    grossSalary: Number(formData.grossSalary),
+    grossSalary: Number(formData.grossSalary || formData.pjGrossSalary),
     mealAllowance: Number(formData.mealAllowance) || undefined,
     transportAllowance: Number(formData.transportAllowance) || undefined,
     healthInsurance: Number(formData.healthInsurance) || undefined,
