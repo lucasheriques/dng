@@ -94,7 +94,7 @@ export function calculateCLT(input: SalaryInput) {
     (input.transportAllowance || 0) +
     (input.healthInsurance || 0) +
     (input.otherBenefits || 0) +
-    (input.includeFGTS ? totalMonthlyFGTS : 0);
+    (includeFGTS ? totalMonthlyFGTS : 0);
 
   return {
     netSalary: netBaseSalary,
@@ -117,7 +117,7 @@ export function calculateCLT(input: SalaryInput) {
       potentialMonthlySeverance: monthlySeveranceValue,
     },
     total: netBaseSalary + benefits + netThirteenth + netVacation,
-    includeFGTS: input.includeFGTS,
+    includeFGTS: includeFGTS,
   };
 }
 
