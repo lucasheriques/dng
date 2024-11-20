@@ -109,7 +109,7 @@ export function SalaryCalculatorClient({
     setShareButtonText("URL copiada!");
     setTimeout(() => {
       setShareButtonText("Compartilhar");
-    }, 2000);
+    }, 3000);
   };
 
   const handleClear = () => {

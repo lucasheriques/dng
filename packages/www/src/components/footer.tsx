@@ -93,7 +93,7 @@ export function Footer() {
                 target="_blank"
               >
                 Participar da mentoria
-                <div className="motion-preset-float bg-white/30 text-black rounded-full w-8 h-8 flex items-center justify-center">
+                <div className="motion-preset-oscillate motion-duration-1500 bg-white/50 text-black rounded-full w-8 h-8 flex items-center justify-center">
                   🛸
                 </div>
               </Link>
