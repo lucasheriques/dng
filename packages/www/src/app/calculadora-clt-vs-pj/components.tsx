@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { Info } from "lucide-react";
 import { CalculationResults } from "./types";
 
@@ -104,7 +104,7 @@ export function DetailRow({
   value,
   type = "neutral",
   tooltipContent,
-  className,
+  className = "",
 }: {
   label: string;
   value: string;
@@ -121,7 +121,7 @@ export function DetailRow({
   return (
     <TableRow label={label} tooltipContent={tooltipContent}>
       <div
-        className={`px-3 py-2 text-right ${valueClassName[type]} ${className}`}
+        className={cn("px-3 py-2 text-right", valueClassName[type], className)}
       >
         {type === "addition" ? "+" : type === "deduction" ? "-" : ""}
         {value}
@@ -146,8 +146,17 @@ export function ResultsAccordion({
       <div>
         <TableHeader>Resultados</TableHeader>
         <TableRow
-          label="Total Líquido + Benefícios Acumulados"
+          label="Salário Líquido Mensal"
           className="font-semibold"
+          tooltipContent="Esse é o valor que vai entrar na sua conta, todo mês, depois de todos os descontos, sem contar com os benefícios."
+        >
+          <div className="px-3 py-2 text-right">
+            {formatCurrency(results.clt.netSalary)}
+          </div>
+        </TableRow>
+        <TableRow
+          label="Salário Líquido + Benefícios Acumulados"
+          className="font-semibold text-emerald-400"
         >
           <div className="px-3 py-2 text-right">
             {formatCurrency(results.clt.total)}
@@ -169,15 +178,10 @@ export function ResultsAccordion({
             </AccordionTrigger>
             <AccordionContent className="pb-0">
               <DetailRow
-                label="Salário Bruto"
-                value={formatCurrency(
-                  results.clt.netSalary +
-                    results.clt.deductions.inss +
-                    results.clt.deductions.ir
-                )}
+                label="Salário Bruto Mensal"
+                value={formatCurrency(results.clt.grossSalary)}
                 type="addition"
               />
-
               <TableHeader>Benefícios</TableHeader>
               {results.clt.detailedBenefits.transportAllowance > 0 && (
                 <DetailRow
@@ -275,14 +279,30 @@ export function ResultsAccordion({
     );
   }
 
+  const isThereAnyPJBenefits =
+    results.pj.benefits.taxable > 0 || results.pj.benefits.nonTaxable > 0;
+
   return (
     <div>
       <TableHeader>Resultados</TableHeader>
-      <TableRow label="Total Líquido" className="font-semibold">
+      <TableRow
+        label="Total Líquido"
+        className={`font-semibold ${results.pj.benefits.nonTaxable > 0 ? "text-slate-200" : "text-emerald-400"}`}
+      >
         <div className="px-3 py-2 text-right">
-          {formatCurrency(results.pj.total)}
+          {formatCurrency(results.pj.netSalary)}
         </div>
       </TableRow>
+      {results.pj.benefits.nonTaxable > 0 && (
+        <TableRow
+          label="Líquido + Benefícios Não Tributáveis"
+          className="font-semibold text-emerald-400"
+        >
+          <div className="px-3 py-2 text-right">
+            {formatCurrency(results.pj.total)}
+          </div>
+        </TableRow>
+      )}
       <Accordion
         type="single"
         value={isExpanded ? "details" : ""}
@@ -301,10 +321,7 @@ export function ResultsAccordion({
               value={formatCurrency(results.pj.grossSalary)}
               type="addition"
             />
-            {(results.pj.benefits.taxable > 0 ||
-              results.pj.benefits.nonTaxable > 0) && (
-              <TableHeader>Benefícios</TableHeader>
-            )}
+            {isThereAnyPJBenefits && <TableHeader>Benefícios</TableHeader>}
             {results.pj.benefits.taxable > 0 && (
               <DetailRow
                 label="Benefícios Tributáveis"

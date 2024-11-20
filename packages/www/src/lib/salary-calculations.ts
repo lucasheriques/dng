@@ -70,7 +70,7 @@ export function calculateCLT(input: SalaryInput) {
     : 0;
 
   // Calculate net base salary
-  const netBaseSalary = grossSalary - baseINSS - baseIR - transportDeduction;
+  const netSalary = grossSalary - baseINSS - baseIR - transportDeduction;
 
   // Calculate FGTS including potential severance
   const monthlyFGTS = grossSalary * 0.08;
@@ -78,8 +78,8 @@ export function calculateCLT(input: SalaryInput) {
   const fgtsVacation = ((grossSalary * 1.33333) / 12) * 0.08;
   const totalMonthlyFGTS = monthlyFGTS + fgtsThirteenth + fgtsVacation;
 
-  const netThirteenth = netBaseSalary / 12;
-  const netVacation = (netBaseSalary * 0.33) / 12; // Includes the 1/3 bonus
+  const netThirteenth = netSalary / 12;
+  const netVacation = (netSalary * 0.33) / 12; // Includes the 1/3 bonus
   // Calculate total FGTS accumulated
   const totalAccumulatedFGTS = totalMonthlyFGTS * 12 * yearsAtCompany;
 
@@ -97,7 +97,8 @@ export function calculateCLT(input: SalaryInput) {
     (includeFGTS ? totalMonthlyFGTS : 0);
 
   return {
-    netSalary: netBaseSalary,
+    grossSalary,
+    netSalary,
     deductions: {
       inss: baseINSS,
       ir: baseIR,
@@ -116,7 +117,7 @@ export function calculateCLT(input: SalaryInput) {
       severance: potentialSeverance,
       potentialMonthlySeverance: monthlySeveranceValue,
     },
-    total: netBaseSalary + benefits + netThirteenth + netVacation,
+    total: netSalary + benefits + netThirteenth + netVacation,
     includeFGTS: includeFGTS,
   };
 }
@@ -141,12 +142,7 @@ export function calculatePJ(input: PJInput) {
   const taxes = taxableAmount * taxRate;
 
   const netSalary =
-    taxableAmount -
-    taxes -
-    accountingFee -
-    inssContribution -
-    otherExpenses +
-    nonTaxableBenefits;
+    taxableAmount - taxes - accountingFee - inssContribution - otherExpenses;
 
   return {
     netSalary,
@@ -162,7 +158,7 @@ export function calculatePJ(input: PJInput) {
       taxable: taxableBenefits,
       nonTaxable: nonTaxableBenefits,
     },
-    total: netSalary,
+    total: netSalary + nonTaxableBenefits,
   };
 }
 
