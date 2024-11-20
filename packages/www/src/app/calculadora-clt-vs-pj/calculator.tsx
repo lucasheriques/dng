@@ -42,10 +42,13 @@ const defaultFormData: FormData = {
   healthInsurance: "",
   otherBenefits: "",
   includeFGTS: true,
+  yearsAtCompany: "",
   accountingFee: "189",
   inssContribution: String(1412 * 0.11),
   taxRate: "10",
   otherExpenses: "",
+  taxableBenefits: "",
+  nonTaxableBenefits: "",
 };
 
 export function SalaryCalculatorClient({
@@ -227,6 +230,17 @@ export function SalaryCalculatorClient({
               />
             </TableRow>
 
+            <TableHeader>Outros dados</TableHeader>
+            <TableRow
+              label="Anos na empresa"
+              tooltipContent="Usado para calcular a multa rescisória em caso de demissão sem justa causa."
+            >
+              <TableInput
+                value={formData.yearsAtCompany}
+                onChange={(v) => handleInputChange("yearsAtCompany", v)}
+              />
+            </TableRow>
+
             {results && (
               <ResultsAccordion
                 results={results}
@@ -294,6 +308,28 @@ export function SalaryCalculatorClient({
               />
             </TableRow>
 
+            <TableHeader>Benefícios</TableHeader>
+            <TableRow
+              label="Benefícios Tributáveis"
+              tooltipContent="Benefícios que são somados ao salário bruto para fins de tributação"
+            >
+              <TableInput
+                value={formData.taxableBenefits}
+                onChange={(v) => handleInputChange("taxableBenefits", v)}
+                prefix="R$"
+              />
+            </TableRow>
+            <TableRow
+              label="Benefícios Não-Tributáveis"
+              tooltipContent="Benefícios que você recebe mas não são tributados"
+            >
+              <TableInput
+                value={formData.nonTaxableBenefits}
+                onChange={(v) => handleInputChange("nonTaxableBenefits", v)}
+                prefix="R$"
+              />
+            </TableRow>
+
             {results && (
               <ResultsAccordion
                 results={results}
@@ -331,6 +367,7 @@ export function calculateResults(
     healthInsurance: Number(formData.healthInsurance) || undefined,
     otherBenefits: Number(formData.otherBenefits) || undefined,
     includeFGTS: formData.includeFGTS,
+    yearsAtCompany: Number(formData.yearsAtCompany) || 0,
   };
 
   const pjInput = {
@@ -339,6 +376,8 @@ export function calculateResults(
     inssContribution: Number(formData.inssContribution),
     taxRate: Number(formData.taxRate) / 100,
     otherExpenses: Number(formData.otherExpenses) || 0,
+    taxableBenefits: Number(formData.taxableBenefits) || 0,
+    nonTaxableBenefits: Number(formData.nonTaxableBenefits) || 0,
   };
 
   const cltResults = calculateCLT(cltInput);

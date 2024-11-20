@@ -104,22 +104,25 @@ export function DetailRow({
   value,
   type = "neutral",
   tooltipContent,
+  className,
 }: {
   label: string;
   value: string;
   type?: "addition" | "deduction" | "neutral";
   tooltipContent?: string;
+  className?: string;
 }) {
-  const valueClassName =
-    type === "addition"
-      ? "text-green-400"
-      : type === "deduction"
-        ? "text-red-400"
-        : "";
+  const valueClassName = {
+    addition: "text-green-400",
+    deduction: "text-red-400",
+    neutral: "text-slate-400",
+  };
 
   return (
     <TableRow label={label} tooltipContent={tooltipContent}>
-      <div className={`px-3 py-2 text-right ${valueClassName}`}>
+      <div
+        className={`px-3 py-2 text-right ${valueClassName[type]} ${className}`}
+      >
         {type === "addition" ? "+" : type === "deduction" ? "-" : ""}
         {value}
       </div>
@@ -153,17 +156,17 @@ export function ResultsAccordion({
         <Accordion
           type="single"
           value={isExpanded ? "details" : ""}
-          onClick={onToggle}
           className="w-full"
         >
           <AccordionItem value="details" className="border-0">
-            <div className="bg-slate-800/50">
-              <AccordionTrigger className="hover:no-underline px-3 py-2 text-sm">
-                {isExpanded
-                  ? "Ocultar cálculo detalhado"
-                  : "Ver cálculo detalhado"}
-              </AccordionTrigger>
-            </div>
+            <AccordionTrigger
+              className="hover:no-underline px-3 py-2 text-sm bg-slate-600/50"
+              onClick={onToggle}
+            >
+              {isExpanded
+                ? "Ocultar cálculo detalhado"
+                : "Ver cálculo detalhado"}
+            </AccordionTrigger>
             <AccordionContent className="pb-0">
               <DetailRow
                 label="Salário Bruto"
@@ -174,31 +177,8 @@ export function ResultsAccordion({
                 )}
                 type="addition"
               />
-              <DetailRow
-                label="INSS"
-                value={formatCurrency(results.clt.deductions.inss)}
-                type="deduction"
-              />
-              <DetailRow
-                label="IRRF"
-                value={formatCurrency(results.clt.deductions.ir)}
-                type="deduction"
-              />
-              {results.clt.detailedBenefits.transportDeduction > 0 && (
-                <DetailRow
-                  label="Desconto VT (6%)"
-                  value={formatCurrency(
-                    results.clt.detailedBenefits.transportDeduction
-                  )}
-                  type="deduction"
-                />
-              )}
-              <DetailRow
-                label="Salário Líquido Base"
-                value={formatCurrency(results.clt.netSalary)}
-                type="neutral"
-              />
-              <TableHeader>Benefícios CLT</TableHeader>
+
+              <TableHeader>Benefícios</TableHeader>
               {results.clt.detailedBenefits.transportAllowance > 0 && (
                 <DetailRow
                   label="Vale-Transporte"
@@ -235,13 +215,15 @@ export function ResultsAccordion({
                   type="addition"
                 />
               )}
-              {results.clt.detailedBenefits.fgts > 0 && (
-                <DetailRow
-                  label="FGTS Mensal"
-                  value={formatCurrency(results.clt.detailedBenefits.fgts)}
-                  type="addition"
-                />
-              )}
+              <DetailRow
+                label={
+                  results.clt.includeFGTS
+                    ? "FGTS Mensal"
+                    : "FGTS Mensal (não incluso na soma)"
+                }
+                value={formatCurrency(results.clt.detailedBenefits.fgts)}
+                type={results.clt.includeFGTS ? "addition" : "neutral"}
+              />
               <DetailRow
                 label="13º Salário (proporcional)"
                 value={formatCurrency(
@@ -256,6 +238,36 @@ export function ResultsAccordion({
                 )}
                 type="addition"
               />
+              {results.clt.detailedBenefits.severance > 0 && (
+                <DetailRow
+                  label="Indenização em caso de demissão"
+                  tooltipContent="Valor mensal proporcional da multa de 40% do FGTS em caso de demissão sem justa causa"
+                  value={formatCurrency(results.clt.detailedBenefits.severance)}
+                  type="neutral"
+                  className="text-slate-100"
+                />
+              )}
+
+              <TableHeader>Deduções</TableHeader>
+              <DetailRow
+                label="INSS"
+                value={formatCurrency(results.clt.deductions.inss)}
+                type="deduction"
+              />
+              <DetailRow
+                label="IRRF"
+                value={formatCurrency(results.clt.deductions.ir)}
+                type="deduction"
+              />
+              {results.clt.detailedBenefits.transportDeduction > 0 && (
+                <DetailRow
+                  label="Desconto VT (6%)"
+                  value={formatCurrency(
+                    results.clt.detailedBenefits.transportDeduction
+                  )}
+                  type="deduction"
+                />
+              )}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -274,29 +286,41 @@ export function ResultsAccordion({
       <Accordion
         type="single"
         value={isExpanded ? "details" : ""}
-        onClick={onToggle}
         className="w-full"
       >
         <AccordionItem value="details" className="border-0">
-          <div className="bg-slate-800/50">
-            <AccordionTrigger className="hover:no-underline px-3 py-2 text-sm">
-              {isExpanded
-                ? "Ocultar cálculo detalhado"
-                : "Ver cálculo detalhado"}
-            </AccordionTrigger>
-          </div>
+          <AccordionTrigger
+            className="hover:no-underline px-3 py-2 text-sm bg-slate-600/50"
+            onClick={onToggle}
+          >
+            {isExpanded ? "Ocultar cálculo detalhado" : "Ver cálculo detalhado"}
+          </AccordionTrigger>
           <AccordionContent className="pb-0">
             <DetailRow
               label="Faturamento Bruto"
-              value={formatCurrency(
-                results.pj.netSalary +
-                  results.pj.deductions.taxes +
-                  results.pj.deductions.accountingFee +
-                  results.pj.deductions.inssContribution +
-                  results.pj.deductions.otherExpenses
-              )}
+              value={formatCurrency(results.pj.grossSalary)}
               type="addition"
             />
+            {(results.pj.benefits.taxable > 0 ||
+              results.pj.benefits.nonTaxable > 0) && (
+              <TableHeader>Benefícios</TableHeader>
+            )}
+            {results.pj.benefits.taxable > 0 && (
+              <DetailRow
+                label="Benefícios Tributáveis"
+                value={formatCurrency(results.pj.benefits.taxable)}
+                type="addition"
+              />
+            )}
+            {results.pj.benefits.nonTaxable > 0 && (
+              <DetailRow
+                label="Benefícios Não Tributáveis"
+                value={formatCurrency(results.pj.benefits.nonTaxable)}
+                type="addition"
+              />
+            )}
+
+            <TableHeader>Deduções</TableHeader>
             <DetailRow
               label="Impostos"
               value={formatCurrency(results.pj.deductions.taxes)}

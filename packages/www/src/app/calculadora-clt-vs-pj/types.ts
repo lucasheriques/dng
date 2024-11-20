@@ -1,3 +1,5 @@
+import { calculateCLT, calculatePJ } from "@/lib/salary-calculations";
+
 export type FormData = {
   grossSalary: string;
   pjGrossSalary: string;
@@ -6,10 +8,13 @@ export type FormData = {
   healthInsurance: string;
   otherBenefits: string;
   includeFGTS: boolean;
+  yearsAtCompany: string;
   accountingFee: string;
   inssContribution: string;
   taxRate: string;
   otherExpenses: string;
+  taxableBenefits: string;
+  nonTaxableBenefits: string;
 };
 
 export type CLTDeductions = {
@@ -27,15 +32,10 @@ export type CLTBenefits = {
   fgts: number;
   thirteenthSalary: number;
   vacationBonus: number;
+  potentialMonthlySeverance: number;
 };
 
-export type CLTResults = {
-  netSalary: number;
-  deductions: CLTDeductions;
-  benefits: number;
-  detailedBenefits: CLTBenefits;
-  total: number;
-};
+export type CLTResults = ReturnType<typeof calculateCLT>;
 
 export type PJDeductions = {
   taxes: number;
@@ -45,11 +45,7 @@ export type PJDeductions = {
   taxRate: number;
 };
 
-export type PJResults = {
-  netSalary: number;
-  deductions: PJDeductions;
-  total: number;
-};
+export type PJResults = ReturnType<typeof calculatePJ>;
 
 export type CalculationResults = {
   clt: CLTResults;

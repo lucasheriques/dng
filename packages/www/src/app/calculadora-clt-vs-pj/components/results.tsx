@@ -49,8 +49,7 @@ export default function Results({
             <TableHead className="px-0">Regime</TableHead>
             <TableHead className="text-right">Salário Líquido Mensal</TableHead>
             <TableHead className="text-right">Salário Líquido Anual</TableHead>
-            <TableHead className="text-right">Equivalente CLT</TableHead>
-            <TableHead className="text-right px-0">Equivalente PJ</TableHead>
+            <TableHead className="text-right px-0">Equivalente</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -62,9 +61,8 @@ export default function Results({
             <TableCell className="text-right">
               {formatCurrency(results.clt.total * 12)}
             </TableCell>
-            <TableCell className="text-right">-</TableCell>
             <TableCell className="text-right px-0">
-              {formatCurrency(cltToPJEquivalent)}
+              Valor PJ: {formatCurrency(cltToPJEquivalent)}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -75,10 +73,9 @@ export default function Results({
             <TableCell className="text-right">
               {formatCurrency(results.pj.total * 12)}
             </TableCell>
-            <TableCell className="text-right">
-              {formatCurrency(pjToCLTEquivalent)}
+            <TableCell className="text-right px-0">
+              Valor CLT: {formatCurrency(pjToCLTEquivalent)}
             </TableCell>
-            <TableCell className="text-right px-0">-</TableCell>
           </TableRow>
         </TableBody>
       </Table>

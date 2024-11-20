@@ -7,6 +7,7 @@ interface SalaryInput {
   healthInsurance?: number;
   otherBenefits?: number;
   includeFGTS?: boolean;
+  yearsAtCompany?: number;
 }
 
 interface PJInput {
@@ -15,6 +16,8 @@ interface PJInput {
   inssContribution?: number;
   taxRate?: number;
   otherExpenses?: number;
+  taxableBenefits?: number;
+  nonTaxableBenefits?: number;
 }
 
 const INSS_RANGES = [
@@ -55,7 +58,7 @@ function calculateIRRF(baseIR: number): number {
 }
 
 export function calculateCLT(input: SalaryInput) {
-  const { grossSalary, includeFGTS = true } = input;
+  const { grossSalary, includeFGTS = true, yearsAtCompany = 0 } = input;
 
   // Calculate INSS and IR for base salary
   const baseINSS = calculateINSS(grossSalary);
@@ -69,22 +72,29 @@ export function calculateCLT(input: SalaryInput) {
   // Calculate net base salary
   const netBaseSalary = grossSalary - baseINSS - baseIR - transportDeduction;
 
-  // Calculate FGTS (not taxed)
-  const fgts = includeFGTS ? grossSalary * 0.08 : 0;
-  const fgtsThirteenth = includeFGTS ? (grossSalary / 12) * 0.08 : 0;
-  const fgtsVacation = includeFGTS ? ((grossSalary * 1.33333) / 12) * 0.08 : 0;
-  const totalFGTS = fgts + fgtsThirteenth + fgtsVacation;
+  // Calculate FGTS including potential severance
+  const monthlyFGTS = grossSalary * 0.08;
+  const fgtsThirteenth = (grossSalary / 12) * 0.08;
+  const fgtsVacation = ((grossSalary * 1.33333) / 12) * 0.08;
+  const totalMonthlyFGTS = monthlyFGTS + fgtsThirteenth + fgtsVacation;
 
-  // Simplified 13th and vacation calculations based on net salary
   const netThirteenth = netBaseSalary / 12;
   const netVacation = (netBaseSalary * 0.33) / 12; // Includes the 1/3 bonus
+  // Calculate total FGTS accumulated
+  const totalAccumulatedFGTS = totalMonthlyFGTS * 12 * yearsAtCompany;
+
+  // Calculate potential severance (40% of FGTS)
+  const potentialSeverance = totalAccumulatedFGTS * 0.4;
+
+  // Amortize severance over 12 months for monthly comparison
+  const monthlySeveranceValue = potentialSeverance / 12;
 
   const benefits =
     (input.mealAllowance || 0) +
     (input.transportAllowance || 0) +
     (input.healthInsurance || 0) +
     (input.otherBenefits || 0) +
-    totalFGTS;
+    (input.includeFGTS ? totalMonthlyFGTS : 0);
 
   return {
     netSalary: netBaseSalary,
@@ -100,11 +110,14 @@ export function calculateCLT(input: SalaryInput) {
       transportDeduction,
       healthInsurance: input.healthInsurance || 0,
       otherBenefits: input.otherBenefits || 0,
-      fgts: totalFGTS,
+      fgts: totalMonthlyFGTS,
       thirteenthSalary: netThirteenth,
       vacationBonus: netVacation,
+      severance: potentialSeverance,
+      potentialMonthlySeverance: monthlySeveranceValue,
     },
     total: netBaseSalary + benefits + netThirteenth + netVacation,
+    includeFGTS: input.includeFGTS,
   };
 }
 
@@ -114,25 +127,40 @@ export function calculatePJ(input: PJInput) {
     accountingFee = 189,
     taxRate = 0.1,
     otherExpenses = 0,
+    taxableBenefits = 0,
+    nonTaxableBenefits = 0,
   } = input;
 
   const MINIMUM_WAGE = 1412;
   const INSS_RATE = 0.11;
 
   const inssContribution = input.inssContribution ?? MINIMUM_WAGE * INSS_RATE;
-  const taxes = grossSalary * taxRate;
+
+  // Add taxable benefits to gross salary for tax calculation
+  const taxableAmount = grossSalary + taxableBenefits;
+  const taxes = taxableAmount * taxRate;
 
   const netSalary =
-    grossSalary - taxes - accountingFee - inssContribution - otherExpenses;
+    taxableAmount -
+    taxes -
+    accountingFee -
+    inssContribution -
+    otherExpenses +
+    nonTaxableBenefits;
 
   return {
     netSalary,
+    grossSalary,
     deductions: {
       taxes,
       accountingFee,
       inssContribution,
       otherExpenses,
       taxRate,
+    },
+    benefits: {
+      taxable: taxableBenefits,
+      nonTaxable: nonTaxableBenefits,
     },
     total: netSalary,
   };
