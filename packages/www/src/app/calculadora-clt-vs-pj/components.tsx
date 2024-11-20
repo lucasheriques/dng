@@ -220,15 +220,6 @@ export function ResultsAccordion({
                 />
               )}
               <DetailRow
-                label={
-                  results.clt.includeFGTS
-                    ? "FGTS Mensal"
-                    : "FGTS Mensal (não incluso na soma)"
-                }
-                value={formatCurrency(results.clt.detailedBenefits.fgts)}
-                type={results.clt.includeFGTS ? "addition" : "neutral"}
-              />
-              <DetailRow
                 label="13º Salário (proporcional)"
                 value={formatCurrency(
                   results.clt.detailedBenefits.thirteenthSalary
@@ -241,6 +232,15 @@ export function ResultsAccordion({
                   results.clt.detailedBenefits.vacationBonus
                 )}
                 type="addition"
+              />
+              <DetailRow
+                label={
+                  results.clt.includeFGTS
+                    ? "FGTS Mensal"
+                    : "FGTS Mensal (não incluso na soma)"
+                }
+                value={formatCurrency(results.clt.detailedBenefits.fgts)}
+                type={results.clt.includeFGTS ? "addition" : "neutral"}
               />
               {results.clt.detailedBenefits.severance > 0 && (
                 <DetailRow
