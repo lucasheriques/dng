@@ -6,19 +6,19 @@ import { SalaryCalculatorClient } from "./calculator";
 // type Params = Promise<{ slug: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-async function getSelicRate() {
-  try {
-    const response = await fetch(
-      "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1",
-      { next: { revalidate: 86400 } } // Revalidate every 24 hours (24 * 60 * 60 seconds)
-    );
-    const data = await response.json();
-    return Number(data[0].valor);
-  } catch (error) {
-    console.error("Error fetching SELIC rate:", error);
-    return 11.25; // Fallback value
-  }
-}
+// async function getSelicRate() {
+//   try {
+//     const response = await fetch(
+//       "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1",
+//       { next: { revalidate: 86400 } } // Revalidate every 24 hours (24 * 60 * 60 seconds)
+//     );
+//     const data = await response.json();
+//     return Number(data[0].valor);
+//   } catch (error) {
+//     console.error("Error fetching SELIC rate:", error);
+//     return 11.25; // Fallback value
+//   }
+// }
 
 export const metadata = {
   title: "Calculadora de Salário CLT e PJ | Dev na Gringa",
