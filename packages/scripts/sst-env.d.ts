@@ -23,6 +23,10 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "SelicRate": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
     "www": {
       "type": "sst.aws.Nextjs"
       "url": string

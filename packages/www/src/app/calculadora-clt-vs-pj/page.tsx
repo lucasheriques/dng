@@ -1,5 +1,6 @@
 import { FormData } from "@/app/calculadora-clt-vs-pj/types";
 import { decompress } from "@/app/calculadora-clt-vs-pj/utils";
+import { Resource } from "sst/resource";
 import { SalaryCalculatorClient } from "./calculator";
 
 // type Params = Promise<{ slug: string }>;
@@ -36,13 +37,14 @@ export default async function SalaryCalculator({
 
   if (data) {
     try {
+      console.log("Trying to decompress data: ", data);
       initialData = decompress(data as string);
     } catch (e) {
       console.error("Failed to parse form data from URL", e);
     }
   }
 
-  const selicRate = await getSelicRate();
+  const selicRate = Number(Resource.SelicRate.value);
 
   return (
     <div className="py-24 px-4 max-w-7xl mx-auto">

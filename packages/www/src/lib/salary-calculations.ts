@@ -184,11 +184,5 @@ export function findPJEquivalentForCLT(
   const otherExpenses = Number(formData.otherExpenses) || 0;
   const fixedCosts = accountingFee + inssContribution + otherExpenses;
 
-  console.log({
-    targetNet,
-    fixedCosts,
-    taxRate,
-  });
-
   return (targetNet + fixedCosts) / (1 - taxRate);
 }
