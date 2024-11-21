@@ -4,7 +4,7 @@ import { ExpandableCard } from "@/components/expandable-card";
 import { MentorshipSection } from "@/components/mentorship-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { POPULAR_ARTICLES, socials } from "@/lib/constants";
+import { POPULAR_ARTICLES, SOCIALS } from "@/lib/constants";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -49,7 +49,7 @@ const data: TimelineEntry[] = [
         </div>
         <Button className="w-full md:w-auto min-w-64" variant="outline" asChild>
           <Link
-            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
+            href={`${SOCIALS.newsletter}/subscribe?ref=nagringa.dev`}
             className="flex items-center"
           >
             Receba os artigos toda semana
@@ -62,7 +62,7 @@ const data: TimelineEntry[] = [
   {
     title: "Mentoria",
     date: "Junho 2024",
-    content: <MentorshipSection newsletterUrl={socials.newsletter} />,
+    content: <MentorshipSection newsletterUrl={SOCIALS.newsletter} />,
   },
   {
     title: "Depoimentos",

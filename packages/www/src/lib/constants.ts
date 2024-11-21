@@ -1,4 +1,25 @@
-export const socials = {
+import {
+  SiDiscord,
+  SiLinkedin,
+  SiX,
+  SiYoutube,
+} from "@icons-pack/react-simple-icons";
+import {
+  Calendar,
+  FileText,
+  History as HistoryIcon,
+  Newspaper,
+  Target,
+  UserPlus,
+} from "lucide-react";
+
+import ArticleList from "@/lib/article-list.json";
+
+export const MOST_POPULAR_ARTICLES = ArticleList.sort(
+  (a, b) => b.views - a.views
+);
+
+export const SOCIALS = {
   newsletter: "https://newsletter.nagringa.dev",
   discord: "https://discord.gg/KfMwzN839v",
   github: "https://github.com/lucasheriques/",
@@ -14,7 +35,67 @@ export const socials = {
   resume: "https://cv.lucasfaria.dev",
   calendar: "https://cal.com/lucasfaria",
   personalWebsite: "https://lucasfaria.dev",
-  whatsapp: "https://wa.me/5531982092772",
+};
+
+export const SOCIAL_LINKS = {
+  newsletter: {
+    title: "Newsletter",
+    href: SOCIALS.newsletter,
+    icon: Newspaper,
+  },
+  discord: {
+    title: "Discord",
+    href: SOCIALS.discord,
+    icon: SiDiscord,
+  },
+  bookCall: {
+    title: "Converse comigo",
+    href: SOCIALS.calendar,
+    icon: Calendar,
+  },
+  youtube: {
+    title: "YouTube",
+    href: SOCIALS.youtube,
+    icon: SiYoutube,
+  },
+  linkedin: {
+    title: "Linkedin",
+    href: SOCIALS.linkedin,
+    icon: SiLinkedin,
+  },
+  x: {
+    title: "X/Twitter",
+    href: SOCIALS.twitter,
+    icon: SiX,
+  },
+};
+
+export const MENTORSHIP_LINKS = {
+  joinMentorship: {
+    title: "Participe da mentoria",
+    href: `${SOCIALS.newsletter}/subscribe?ref=nagringa.dev`,
+    icon: UserPlus,
+  },
+  pastMentorings: {
+    title: "Mentorias passadas",
+    href: "https://mentoria.nagringa.dev",
+    icon: HistoryIcon,
+  },
+  monthlyGoals: {
+    title: "Metas do mês",
+    href: "https://metas.nagringa.dev",
+    icon: Target,
+  },
+  eventsCalendar: {
+    title: "Calendário de eventos",
+    href: "https://calendario.nagringa.dev/",
+    icon: Calendar,
+  },
+  allResources: {
+    title: "Todos os recursos",
+    href: "https://drive.nagringa.dev",
+    icon: FileText,
+  },
 };
 
 export const POPULAR_ARTICLES = [

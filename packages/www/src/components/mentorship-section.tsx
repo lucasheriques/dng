@@ -1,5 +1,5 @@
 import { BorderBeam } from "@/components/ui/border-beam";
-import { socials } from "@/lib/constants";
+import { SOCIALS } from "@/lib/constants";
 import {
   BookOpen,
   Network,
@@ -59,7 +59,7 @@ const mentorshipItems = [
         <p>
           <strong>Atenção:</strong> A mentoria em grupo é exclusiva para os{" "}
           <a
-            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
+            href={`${SOCIALS.newsletter}/subscribe?ref=nagringa.dev`}
             className="underline"
             target="_blank"
           >
@@ -112,7 +112,7 @@ const mentorshipItems = [
           </a>{" "}
           Para uma sessão recorrente, com desconto no valor anual,{" "}
           <a
-            href={`${socials.newsletter}/subscribe?ref=nagringa.dev`}
+            href={`${SOCIALS.newsletter}/subscribe?ref=nagringa.dev`}
             className="underline"
             target="_blank"
           >

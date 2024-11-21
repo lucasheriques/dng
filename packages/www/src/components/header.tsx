@@ -1,22 +1,19 @@
 "use client";
-import { socials } from "@/lib/constants";
+import { Search } from "@/components/search";
+import { Button } from "@/components/ui/button";
+import { MENTORSHIP_LINKS, SOCIALS } from "@/lib/constants";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import {
-  Calendar,
   ChevronDown,
   CircleDollarSign,
-  FileText,
   Globe2,
-  History,
   Mail,
-  MessageSquare,
   PhoneCall,
-  Target,
-  UserPlus,
-  Youtube,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { SiDiscord, SiYoutube } from "@icons-pack/react-simple-icons";
 
 const comunidade = [
   {
@@ -24,38 +21,12 @@ const comunidade = [
     href: "/calculadora-clt-vs-pj",
     icon: CircleDollarSign,
   },
-  { name: "Newsletter", href: socials.newsletter, icon: Mail },
-  { name: "YouTube", href: socials.youtube, icon: Youtube },
-  { name: "Discord", href: socials.discord, icon: MessageSquare },
-  { name: "Fale comigo", href: socials.calendar, icon: PhoneCall },
+  { name: "Newsletter", href: SOCIALS.newsletter, icon: Mail },
+  { name: "YouTube", href: SOCIALS.youtube, icon: SiYoutube },
+  { name: "Discord", href: SOCIALS.discord, icon: SiDiscord },
+  { name: "Fale comigo", href: SOCIALS.calendar, icon: PhoneCall },
 ];
-const mentoria = [
-  {
-    name: "Participe da mentoria",
-    href: `${socials.newsletter}/subscribe?ref=nagringa.dev`,
-    icon: UserPlus,
-  },
-  {
-    name: "Mentorias passadas",
-    href: "https://mentoria.nagringa.dev",
-    icon: History,
-  },
-  {
-    name: "Metas do mês",
-    href: "https://metas.nagringa.dev",
-    icon: Target,
-  },
-  {
-    name: "Calendário de eventos",
-    href: "https://calendario.nagringa.dev/",
-    icon: Calendar,
-  },
-  {
-    name: "Todos os recursos",
-    href: "https://drive.nagringa.dev",
-    icon: FileText,
-  },
-];
+
 const recentPosts = [
   {
     id: 1,
@@ -91,24 +62,24 @@ const recentPosts = [
 
 export default function Header() {
   return (
-    <Popover
-      className="isolate z-50 bg-slate-950/75 backdrop-blur-md shadow-lg min-w-full fixed top-0 left-0 right-0 motion-preset-slide-down border-b border-slate-800/20"
-      as="header"
-    >
+    <Popover className="isolate z-50 bg-slate-950/75 backdrop-blur-md shadow-lg min-w-full fixed top-0 left-0 right-0 motion-preset-slide-down border-b border-slate-800/20">
       {({ close }) => (
         <>
-          <div className="py-5">
-            <div className="mx-auto max-w-7xl px-4 flex items-center justify-between">
-              <Link href="/" className="items-center gap-2 flex">
-                <Globe2 className="h-6 w-6 text-[#5CFFE1]" />
-                <span className="font-bold text-white text-xl">
-                  Dev na Gringa
-                </span>
-              </Link>
-              <PopoverButton className="inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-200 hover:text-white transition-colors focus:outline-primary rounded focus:outline-2 focus:outline-offset-2">
-                Conteúdos e links
-                <ChevronDown aria-hidden="true" className="h-5 w-5" />
-              </PopoverButton>
+          <div className="py-4 mx-auto max-w-7xl w-full px-4 relative flex items-center justify-between">
+            <Link href="/" className="items-center gap-2 flex">
+              <Globe2 className="h-6 w-6 text-[#5CFFE1]" />
+              <span className="font-bold text-white text-xl">
+                Dev na Gringa
+              </span>
+            </Link>
+            <div className="flex items-center gap-x-1 sm:gap-x-2">
+              <Search />
+              <Button variant="link" asChild className="text-white px-0">
+                <PopoverButton className="focus:outline focus:outline-primary focus:outline-2 focus:outline-offset-2">
+                  Conteúdos e links
+                  <ChevronDown aria-hidden="true" className="h-5 w-5" />
+                </PopoverButton>
+              </Button>
             </div>
           </div>
 
@@ -148,9 +119,9 @@ export default function Header() {
                   </h3>
                   <div className="mt-6 flow-root">
                     <div className="-my-2">
-                      {mentoria.map((item) => (
+                      {Object.values(MENTORSHIP_LINKS).map((item) => (
                         <a
-                          key={item.name}
+                          key={item.href}
                           href={item.href}
                           className="flex gap-x-4 py-2 text-sm/6 font-semibold text-gray-200 hover:text-white transition-all hover:bg-white/5 px-3 -mx-3 rounded-lg group"
                           target="_blank"
@@ -159,7 +130,7 @@ export default function Header() {
                             aria-hidden="true"
                             className="h-6 w-6 flex-none text-gray-500 group-hover:text-gray-300 transition-colors"
                           />
-                          {item.name}
+                          {item.title}
                         </a>
                       ))}
                     </div>
