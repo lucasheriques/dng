@@ -233,6 +233,15 @@ export function ResultsAccordion({
                 )}
                 type="addition"
               />
+              {results.clt.detailedBenefits.plrGross > 0 && (
+                <DetailRow
+                  label="PLR (proporcional)"
+                  value={formatCurrency(
+                    results.clt.detailedBenefits.plrGross / 12
+                  )}
+                  type="addition"
+                />
+              )}
               <DetailRow
                 label={
                   results.clt.includeFGTS
@@ -259,7 +268,7 @@ export function ResultsAccordion({
                 type="deduction"
               />
               <DetailRow
-                label="IRRF"
+                label="IRPF"
                 value={formatCurrency(results.clt.deductions.ir)}
                 type="deduction"
               />
@@ -269,6 +278,13 @@ export function ResultsAccordion({
                   value={formatCurrency(
                     results.clt.detailedBenefits.transportDeduction
                   )}
+                  type="deduction"
+                />
+              )}
+              {results.clt.deductions.plrTax > 0 && (
+                <DetailRow
+                  label="Desconto PLR (IRPF)"
+                  value={formatCurrency(results.clt.deductions.plrTax / 12)}
                   type="deduction"
                 />
               )}

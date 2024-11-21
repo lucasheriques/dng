@@ -18,7 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html
+      lang="pt-BR"
+      className="scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-800"
+    >
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased dark
         selection:bg-teal-500 selection:text-slate-950 bg-slate-950`}

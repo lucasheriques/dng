@@ -49,6 +49,7 @@ const defaultFormData: FormData = {
   otherExpenses: "",
   taxableBenefits: "",
   nonTaxableBenefits: "",
+  plr: "",
 };
 
 export function SalaryCalculatorClient({
@@ -220,6 +221,16 @@ export function SalaryCalculatorClient({
               />
             </TableRow>
             <TableRow
+              label="PLR Anual"
+              tooltipContent="Participação nos Lucros e Resultados (valor bruto anual)"
+            >
+              <TableInput
+                value={formData.plr}
+                onChange={(v) => handleInputChange("plr", v)}
+                prefix="R$"
+              />
+            </TableRow>
+            <TableRow
               label="Outros Benefícios"
               tooltipContent="Qualquer benefício não-taxável que você queira adicionar."
             >
@@ -368,6 +379,7 @@ export function calculateResults(
     otherBenefits: Number(formData.otherBenefits) || undefined,
     includeFGTS: formData.includeFGTS,
     yearsAtCompany: Number(formData.yearsAtCompany) || 0,
+    plr: Number(formData.plr) || undefined,
   };
 
   const pjInput = {

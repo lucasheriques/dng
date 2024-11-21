@@ -15,6 +15,7 @@ export type FormData = {
   otherExpenses: string;
   taxableBenefits: string;
   nonTaxableBenefits: string;
+  plr: string;
 };
 
 export type CLTDeductions = {

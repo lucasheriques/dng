@@ -8,6 +8,7 @@ interface SalaryInput {
   otherBenefits?: number;
   includeFGTS?: boolean;
   yearsAtCompany?: number;
+  plr?: number;
 }
 
 interface PJInput {
@@ -35,6 +36,14 @@ const IRRF_RANGES = [
   { max: Infinity, rate: 0.275, deduction: 896.0 },
 ];
 
+const PLR_IRRF_RANGES = [
+  { max: 7640.8, rate: 0, deduction: 0 },
+  { max: 9922.28, rate: 0.075, deduction: 573.06 },
+  { max: 13167.0, rate: 0.15, deduction: 1317.23 },
+  { max: 16380.38, rate: 0.225, deduction: 2304.76 },
+  { max: Infinity, rate: 0.275, deduction: 3123.78 },
+];
+
 function calculateINSS(salary: number): number {
   let inss = 0;
   let remainingSalary = salary;
@@ -55,6 +64,11 @@ function calculateINSS(salary: number): number {
 function calculateIRRF(baseIR: number): number {
   const irRange = IRRF_RANGES.find((range) => baseIR <= range.max);
   return irRange ? baseIR * irRange.rate - irRange.deduction : 0;
+}
+
+function calculatePLRTax(plrAmount: number): number {
+  const range = PLR_IRRF_RANGES.find((range) => plrAmount <= range.max);
+  return range ? plrAmount * range.rate - range.deduction : 0;
 }
 
 export function calculateCLT(input: SalaryInput) {
@@ -89,12 +103,18 @@ export function calculateCLT(input: SalaryInput) {
   // Amortize severance over 12 months for monthly comparison
   const monthlySeveranceValue = potentialSeverance / 12;
 
+  // Calculate PLR after tax if provided
+  const plrTax = input.plr ? calculatePLRTax(input.plr) : 0;
+  const netPlr = input.plr ? input.plr - plrTax : 0;
+  const monthlyPlr = netPlr / 12; // Distribute PLR over 12 months for comparison
+
   const benefits =
     (input.mealAllowance || 0) +
     (input.transportAllowance || 0) +
     (input.healthInsurance || 0) +
     (input.otherBenefits || 0) +
-    (includeFGTS ? totalMonthlyFGTS : 0);
+    (includeFGTS ? totalMonthlyFGTS : 0) +
+    monthlyPlr;
 
   return {
     grossSalary,
@@ -103,6 +123,7 @@ export function calculateCLT(input: SalaryInput) {
       inss: baseINSS,
       ir: baseIR,
       transportDeduction,
+      plrTax,
     },
     benefits,
     detailedBenefits: {
@@ -116,6 +137,8 @@ export function calculateCLT(input: SalaryInput) {
       vacationBonus: netVacation,
       severance: potentialSeverance,
       potentialMonthlySeverance: monthlySeveranceValue,
+      plrGross: input.plr || 0,
+      plrNet: netPlr,
     },
     total: netSalary + benefits + netThirteenth + netVacation,
     includeFGTS: includeFGTS,

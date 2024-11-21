@@ -4,8 +4,8 @@ import { ConciergeBell, ListCheck, SearchIcon } from "lucide-react";
 
 const stats = [
   { label: "artigos publicados", value: "25+" },
-  { label: "mentorias realizadas", value: "10+" },
-  { label: "visitantes todo mês", value: "10.000+" },
+  { label: "mentorias realizadas", value: "20+" },
+  { label: "visitantes todo mês", value: "12.000+" },
 ];
 
 export default function About() {
