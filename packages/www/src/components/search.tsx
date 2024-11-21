@@ -50,7 +50,7 @@ export function Search() {
         <VisuallyHidden.Root>
           <DialogTitle>Pesquise por um conteúdo ou ferramenta</DialogTitle>
         </VisuallyHidden.Root>
-        <CommandInput placeholder="Pesquise por um conteúdo ou ferramenta..." />
+        <CommandInput placeholder="Pesquise por um conteúdo ou ferramenta" />
         <CommandList>
           <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
           <CommandGroup heading="Ferramentas">
@@ -61,7 +61,7 @@ export function Search() {
               }}
             >
               <Calculator />
-              <span>Calculadora CLT vs PJ</span>
+              <span>Calculadora Salário CLT vs PJ</span>
             </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Recursos da mentoria">
