@@ -18,10 +18,12 @@ import { MENTORSHIP_LINKS, SOCIAL_LINKS, SOCIALS } from "@/lib/constants";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
 import ArticleList from "@/lib/article-list.json";
+import { searchAtom } from "@/lib/atoms";
+import { useAtom } from "jotai";
 
 export function Search() {
   const router = useRouter();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useAtom(searchAtom);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -33,7 +35,7 @@ export function Search() {
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [setOpen]);
 
   const handleClose = () => {
     setOpen(false);

@@ -1,4 +1,5 @@
 import { Providers } from "@/app/providers";
+import { BottomSearchFab } from "@/components/bottom-search-fab";
 import { Footer } from "@/components/footer";
 import Header from "@/components/header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Header />
           <main className="min-h-dvh bg-slate-950">{children}</main>
           <Footer />
+          <BottomSearchFab />
         </Providers>
         <TailwindIndicator />
       </body>

@@ -27,6 +27,7 @@ export function ComparisonCard({
 }: ComparisonCardProps) {
   const [investmentRate, setInvestmentRate] = useState("20");
   const [interestRate, setInterestRate] = useState(String(defaultInterestRate));
+
   return (
     <>
       <Accordion type="single" collapsible defaultValue="investment-projection">

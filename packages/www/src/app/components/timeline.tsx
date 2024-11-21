@@ -4,7 +4,7 @@ import { ExpandableCard } from "@/components/expandable-card";
 import { MentorshipSection } from "@/components/mentorship-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { POPULAR_ARTICLES, SOCIALS } from "@/lib/constants";
+import { MOST_POPULAR_ARTICLES, SOCIALS } from "@/lib/constants";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -36,7 +36,7 @@ const data: TimelineEntry[] = [
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {POPULAR_ARTICLES.map((article, index) => (
+          {MOST_POPULAR_ARTICLES.slice(0, 4).map((article, index) => (
             <ArticleCard
               key={index}
               title={article.title}
