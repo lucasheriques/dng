@@ -272,6 +272,193 @@ const data: TimelineEntry[] = [
               </Link>
             }
           />
+          <ExpandableCard
+            title="Mentoria em grupo"
+            summary="Sou profundamente grato ao Lucas por criar um espaço tão autêntico e por ser um mentor que acredita no potencial de cada membro. E também à comunidade, que perpetua esse legado ao compartilhar suas experiências e apoiar uns aos outros. Juntos, estamos construindo algo grande."
+            fullContent={
+              <div className="prose dark:prose-invert">
+                <p>
+                  Minha jornada na Dev na Gringa ainda está no meio do caminho,
+                  mas já posso dizer que tem sido profundamente transformadora.
+                  Conheci o Lucas Faria por meio de uma publicação no LinkedIn
+                  que dizia &ldquo;Create the things you wish existed&rdquo;. A
+                  autenticidade com que ele se posiciona e fala sobre trabalhar
+                  para empresas internacionais, aprendizado contínuo e
+                  estratégias de mercado me inspirou profundamente. Era como se
+                  ele tivesse traduzido exatamente o que eu buscava: uma mudança
+                  de carreira, a oportunidade de trabalhar no exterior e a
+                  chance de fazer parte de algo maior. Sem hesitar, assinei a
+                  newsletter – o primeiro de muitos passos rumo a uma nova
+                  perspectiva de vida.
+                </p>
+                <p>
+                  Desde que entrei na comunidade, venho participando dos
+                  encontros mensais, explorando os materiais exclusivos e
+                  aplicando os ensinamentos do Lucas para acelerar minha
+                  transição de carreira. Estou aprendendo a me posicionar de
+                  forma mais estratégica, ajustar minha comunicação e encarar
+                  entrevistas com mais segurança e confiança. O Lucas vai além
+                  de oferecer conteúdo técnico, ele traz orientações práticas e
+                  estratégias que realmente fazem a diferença. Ele não entrega
+                  respostas prontas, mas ensina como encontrar o nosso próprio
+                  caminho, sempre respeitando o momento e os objetivos de cada
+                  um.
+                </p>
+                <p>
+                  O acompanhamento próximo que ele oferece e o ambiente
+                  colaborativo da comunidade são os grandes diferenciais. Seja
+                  por meio de conselhos personalizados ou dos encontros em
+                  grupo, o Lucas está sempre presente – incentivando, corrigindo
+                  o curso quando necessário e compartilhando insights valiosos.
+                  E a comunidade? É um espaço único, repleto de pessoas que
+                  compartilham experiências, superam desafios e se apoiam
+                  mutuamente em busca de crescimento. Estar cercado de pessoas
+                  com os mesmos objetivos e comprometidas a entregar o melhor de
+                  si tem sido essencial nessa jornada.
+                </p>
+                <p>
+                  Embora ainda esteja no meio do caminho, já consigo enxergar o
+                  quanto evoluí pessoal e profissionalmente desde que comecei.
+                  Estou me dedicando ao máximo para aproveitar cada recurso,
+                  cada conselho e cada oportunidade que a Dev na Gringa
+                  proporciona. Hoje, posso afirmar com segurança que entrar para
+                  essa comunidade foi uma das melhores decisões que tomei. Não é
+                  apenas um espaço para aprender – é um lugar para compartilhar,
+                  se conectar, se inspirar e encontrar a motivação para alcançar
+                  o que antes parecia fora do alcance.
+                </p>
+                <p>
+                  Sou profundamente grato ao Lucas por criar um espaço tão
+                  autêntico e por ser um mentor que acredita no potencial de
+                  cada membro. E também à comunidade, que perpetua esse legado
+                  ao compartilhar suas experiências e apoiar uns aos outros.
+                  Juntos, estamos construindo algo grande.
+                </p>
+              </div>
+            }
+            footer={
+              <Link
+                href="https://www.linkedin.com/in/gabriel-ob-viana/"
+                target="_blank"
+                className="flex items-center space-x-4"
+              >
+                <Avatar>
+                  <AvatarImage
+                    src="/reviews/gabriel.webp"
+                    alt="Gabriel Viana"
+                  />
+                  <AvatarFallback>GC</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-white">Gabriel Viana</p>
+                  <p className="text-sm text-white/60">Senior Data Analyst</p>
+                </div>
+              </Link>
+            }
+          />
+          <ExpandableCard
+            title="Mentoria individual"
+            summary={
+              <>
+                Se você está considerando investir em si mesmo, posso afirmar
+                com certeza: essa mentoria é mais do que um curso ou um guia — é
+                um verdadeiro <strong>divisor de águas</strong>.
+              </>
+            }
+            fullContent={
+              <div className="prose dark:prose-invert">
+                <p>
+                  Após cerca de quatro meses de mentoria, é o momento de
+                  refletir sobre tudo que aprendi e vivenciei até aqui. Antes de
+                  mais nada, percebi que existem três tipos de mentoria:
+                </p>
+                <ul>
+                  <li>
+                    A primeira: aquela que, no início, não oferece nada de
+                    concreto. Promete mundos e fundos, mas depois que você paga,
+                    entrega apenas migalhas.
+                  </li>
+                  <li>
+                    A segunda: a que até apresenta algumas coisas interessantes
+                    de graça, promete muito, mas, no final, também deixa a
+                    desejar após o pagamento.
+                  </li>
+                  <li>
+                    E a terceira, a melhor de todas: aquela que, desde o começo,
+                    te apresenta uma imensa variedade de conteúdo gratuito, te
+                    integra à comunidade, e só depois te convida para a mentoria
+                    paga. A diferença? Após o investimento, o conteúdo se torna
+                    ainda mais completo, sua visão se expande e cada reunião é
+                    uma oportunidade de aprendizado. Não é conduzida por alguém
+                    formal e distante, mas por uma figura amigável, que
+                    realmente se importa em te ajudar. Ele não dá respostas
+                    prontas, mas te guia para enxergar seus pontos fracos,
+                    quebrar os problemas em pedaços e encontrar as soluções
+                    junto com você.
+                  </li>
+                </ul>
+                <p>E é exatamente aí que a mentoria do Lucas se encaixa!</p>
+                <p>
+                  Minha jornada começou quando encontrei o Lucas por meio de um
+                  artigo no TabNews. Curioso, entrei no Discord da comunidade e
+                  percebi que fui o segundo a entrar. Vasculhando o servidor, vi
+                  um canal de voz dedicado a treino de inglês. Empolgado com o
+                  que tinha encontrado, comentei sobre isso, e o Lucas, para
+                  minha surpresa, marcou uma call de treino para a quinta-feira
+                  seguinte. Achei incrível o jeito que ele abordou a situação,
+                  fazendo parecer algo importante e especial. Eu só havia
+                  mencionado que vi o canal de voz, mas ele perguntou
+                  diretamente sobre minha disponibilidade e organizou tudo.
+                </p>
+                <p>
+                  Posteriormente, descobri a mentoria por meio da página na
+                  Substack. Inicialmente, não consegui realizar o pagamento
+                  porque nenhuma das formas era compatível comigo. Conversei com
+                  ele, e o Lucas foi flexível para encontrar uma solução.
+                </p>
+                <p>
+                  Até hoje, mesmo com o crescimento da comunidade e a chegada de
+                  muitas outras pessoas, continuo me sentindo totalmente
+                  incluído. Mesmo sem ter a mesma bagagem técnica de outros, ele
+                  sempre encontra uma maneira de me ajudar e me fazer entender o
+                  que acontece por lá.
+                </p>
+                <p>
+                  Admiro muito a praticidade com que as coisas são feitas na
+                  comunidade. Desde a ilustração de conceitos, que ele sempre
+                  faz de forma muito visual durante as calls para facilitar
+                  nosso entendimento, até os resumos das reuniões, que nos
+                  ajudam a lembrar exatamente dos pontos mais importantes. A
+                  organização dos canais, tanto no Discord quanto no WhatsApp,
+                  também é algo que me impressiona.
+                </p>
+                <p>
+                  Se você está considerando investir em si mesmo, posso afirmar
+                  com certeza: essa mentoria é mais do que um curso ou um guia —
+                  é um verdadeiro <strong>divisor de águas</strong>.
+                </p>
+              </div>
+            }
+            footer={
+              <Link
+                href="https://www.linkedin.com/in/gustavo-almeida-bb1088264/"
+                target="_blank"
+                className="flex items-center space-x-4"
+              >
+                <Avatar>
+                  <AvatarImage
+                    src="/reviews/gustavo.webp"
+                    alt="Gustavo Almeida"
+                  />
+                  <AvatarFallback>GC</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-white">Gustavo Almeida</p>
+                  <p className="text-sm text-white/60">Fullstack Developer</p>
+                </div>
+              </Link>
+            }
+          />
         </div>
       </div>
     ),
