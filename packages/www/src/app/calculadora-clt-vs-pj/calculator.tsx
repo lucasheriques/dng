@@ -302,7 +302,7 @@ export function SalaryCalculatorClient({
             <TableRow
               label="Alíquota de Impostos (%)"
               tooltipContent={
-                "PJ tem muitos cenários que não são cobertos aqui. Simplifique de forma que você mesmo pode colocar o que achar certo."
+                "PJ tem muitos cenários que não são cobertos aqui. Simplifiquei de forma que você mesmo pode o valor que faz sentido pra você."
               }
             >
               <TableInput

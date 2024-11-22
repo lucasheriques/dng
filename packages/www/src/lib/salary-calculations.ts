@@ -89,7 +89,7 @@ export function calculateCLT(input: SalaryInput) {
   // Calculate FGTS including potential severance
   const monthlyFGTS = grossSalary * 0.08;
   const fgtsThirteenth = (grossSalary / 12) * 0.08;
-  const fgtsVacation = ((grossSalary * 1.33333) / 12) * 0.08;
+  const fgtsVacation = ((grossSalary * 1.33) / 12) * 0.08;
   const totalMonthlyFGTS = monthlyFGTS + fgtsThirteenth + fgtsVacation;
 
   const netThirteenth = netSalary / 12;

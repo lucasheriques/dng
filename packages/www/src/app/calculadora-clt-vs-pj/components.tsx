@@ -5,6 +5,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -36,16 +41,26 @@ export function TableRow({
       <div className="px-3 py-2 bg-slate-800/50 border-r border-slate-700 text-sm text-slate-300 flex justify-between items-center">
         {label}
         {tooltipContent && (
-          <TooltipProvider delayDuration={100}>
-            <Tooltip>
-              <TooltipTrigger>
+          <>
+            <TooltipProvider delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger className="hidden lg:block">
+                  <Info size={16} />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltipContent}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <Popover>
+              <PopoverTrigger className="block lg:hidden">
                 <Info size={16} />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{tooltipContent}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+              </PopoverTrigger>
+              <PopoverContent className="text-sm">
+                {tooltipContent}
+              </PopoverContent>
+            </Popover>
+          </>
         )}
       </div>
       <div>{children}</div>
